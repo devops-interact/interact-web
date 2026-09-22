@@ -117,7 +117,7 @@
     "samples": {
       "Brief": "# Project brief — Acme\n\n## Goals\n- MVP for investor demo in 8 weeks\n- Mobile-first onboarding\n\n## Out of scope\n- Native apps (phase 2)\n\n## Success\n- 50 beta signups at launch",
       "Timeline": "Week 1–2  Discovery + UX flows\nWeek 3–4  Design system + core screens\nWeek 5–7  API + frontend build\nWeek 8     Staging + launch support",
-      "Deliverables": "• Figma source + component library\n• Next.js app in your GitHub org\n• Railway / Vercel deploy pipeline\n• README + handoff session"
+      "Deliverables": "• Figma source + component library\n• Next.js app in your GitHub org\n• Railway deploy pipeline (CI on push to main)\n• README + handoff session"
     }
   },
   "playbook": {

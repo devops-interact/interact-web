@@ -25,6 +25,12 @@ npm run start
 
 Production start binds `0.0.0.0` and uses `PORT` (default 3000).
 
+## Hosting (Railway only)
+
+This project is **not** deployed on Vercel. Production runs only on **Railway**.
+
+If a Vercel project was created automatically when the repo was imported, disconnect it in the [Vercel dashboard](https://vercel.com/dashboard) → project → **Settings** → **Git** → **Disconnect**, or delete the project. Do not add `vercel.json` or connect this repo to Vercel.
+
 ## Deploy (automatic on push to `main`)
 
 Production deploys are wired through **Railway + GitHub**:
