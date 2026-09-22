@@ -25,41 +25,55 @@ npm run start
 
 Production start binds `0.0.0.0` and uses `PORT` (default 3000).
 
-## Deploy on Railway
+## Deploy (automatic on push to `main`)
 
-1. Install the CLI:
+Production deploys are wired through **Railway + GitHub**:
 
-   ```bash
-   brew install railway
-   # or: npm i -g @railway/cli
-   ```
+| Step | What happens |
+|------|----------------|
+| 1 | Push commits to `main` on [devops-interact/interact-web](https://github.com/devops-interact/interact-web) |
+| 2 | Railway detects the push and runs a new build (`npm install` → `npm run build` → `npm start`) |
+| 3 | On success, **production** updates at the URL below |
 
-2. From this directory, deploy (creates/links project on first run):
+**Typical workflow:**
 
-   ```bash
-   cd /path/to/interact-web
-   railway init -n interact-web   # first time only
-   railway up --detach
-   ```
+```bash
+git add .
+git commit -m "Your message"
+git push origin main
+```
 
-   Complete browser OAuth when prompted (or use the device-code link in headless environments).
+Watch builds in the [Railway project dashboard](https://railway.com/project/c43922d6-e265-4084-9ab8-1b92b9ea7b27) or with `railway logs` (CLI linked to this repo).
 
-3. Optional:
+### Manual deploy (optional)
 
-   ```bash
-   railway variables set NODE_ENV=production
-   railway variables set NEXT_PUBLIC_SITE_URL=https://your-domain.up.railway.app
-   railway domain
-   ```
+If you need a deploy without pushing to GitHub:
 
-4. Link service (if needed): `railway service interact-web`
+```bash
+railway up --detach
+```
 
-5. Generate public URL: `railway domain` (or use the Railway dashboard)
+### First-time CLI setup
 
-6. Redeploy after changes: `railway up --detach` or connect GitHub in the Railway dashboard.
+```bash
+brew install railway   # or: npm i -g @railway/cli
+railway login
+cd interact-web
+railway link           # select project interact-web, service interact-web
+```
+
+### Environment variables (production)
+
+Set in Railway → **interact-web** → **Variables**, or via CLI:
+
+```bash
+railway variables set NODE_ENV=production
+railway variables set NEXT_PUBLIC_SITE_URL=https://interact-web-production.up.railway.app
+```
 
 **Live (production):** [https://interact-web-production.up.railway.app](https://interact-web-production.up.railway.app)  
-**Dashboard:** [https://railway.com/project/c43922d6-e265-4084-9ab8-1b92b9ea7b27](https://railway.com/project/c43922d6-e265-4084-9ab8-1b92b9ea7b27)
+**GitHub:** [https://github.com/devops-interact/interact-web](https://github.com/devops-interact/interact-web)  
+**Railway:** [https://railway.com/project/c43922d6-e265-4084-9ab8-1b92b9ea7b27](https://railway.com/project/c43922d6-e265-4084-9ab8-1b92b9ea7b27)
 
 ## Stack
 
