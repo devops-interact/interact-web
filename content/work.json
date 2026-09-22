@@ -1,0 +1,108 @@
+{
+  "projects": [
+    {
+      "slug": "prevify",
+      "title": "Prevify App",
+      "tagline": "Prevify.mx — AI-assisted tax compliance and monitoring.",
+      "coverImage": "/portfolio-imgss/prevify-main.gif",
+      "tags": ["Product", "AI"],
+      "challenges": [
+        "Tax compliance teams across different industries juggle fragmented data, slow manual reviews, and opaque rule changes, making it hard to spot risk early or explain decisions to stakeholders.",
+        "Other concepts of tax compliance software lean too heavily toward the accounting operations of the business; they lack specific tools for live-monitoring fiscal status across vendors, clients, employees, and collaborators."
+      ],
+      "hypothesis": [
+        "A guided monitoring workspace that pairs AI-suggested flags with human-readable rationale, audit trails, and clear escalation paths so experts stay in control.",
+        "Prevify focuses on tax compliance and monitoring with AI-assisted workflows so teams can stay ahead of obligations without drowning in manual checks.",
+        "The experience prioritizes progressive disclosure: summaries for leadership, drill-down for analysts, and exportable evidence packs for reviews—reducing context-switching across tools."
+      ],
+      "roles": [
+        "Brand design & growth",
+        "Product management and product direction",
+        "Compliance UX and monitoring patterns",
+        "Full-stack implementation"
+      ],
+      "outcomes": [
+        { "value": "2 Months", "label": "Design-to-deploy" },
+        { "value": "$40K USD", "label": "Pre-seed raised" },
+        { "value": "400 Hours", "label": "QA testing" }
+      ]
+    },
+    {
+      "slug": "itemz-gg",
+      "title": "Itemz.gg",
+      "tagline": "Itemz.gg — Peer-to-peer virtual collectibles trading.",
+      "coverImage": "/portfolio-imgss/itemz-main.gif",
+      "tags": ["Marketplace", "P2P"],
+      "challenges": [
+        "During the last few years, the digital and virtual collectibles market has boomed and bridged from the videogame industry to the blockchain ecosystem.",
+        "Given the decentralized nature of the blockchain ecosystem, a group of fellow entrepreneurs and I identified an opportunity in peer-to-peer virtual collectibles trading."
+      ],
+      "hypothesis": [
+        "If the user is given a proper decentralized and secure peer-to-peer marketplace platform, they can monetize their ownership of digital collectibles in an open trading market."
+      ],
+      "roles": [
+        "Brand design & growth",
+        "Product management and product direction",
+        "User research and service design",
+        "Full-stack implementation"
+      ],
+      "outcomes": [
+        { "value": "100 Hours", "label": "User research" },
+        { "value": "$10K USD", "label": "Sponsorship raised" },
+        { "value": "+4000", "label": "Users & community members" }
+      ]
+    },
+    {
+      "slug": "splattr",
+      "title": "Splattr",
+      "tagline": "3D reconstruction from video — LongSplat / Gaussian splatting pipelines.",
+      "coverImage": "/portfolio-imgss/splattr-main.gif",
+      "tags": ["3D", "Product"],
+      "challenges": [
+        "Efficiently reconstructing and rendering high-quality 3D scenes from 2D images in real time, without the heavy computational cost and latency of traditional methods like Neural Radiance Fields.",
+        "More concretely: traditional NeRF-style approaches are slow to train and render; real-time applications (AR/VR, simulations, interactive media) require low latency; maintaining photorealistic fidelity while improving performance is non-trivial; and handling large-scale scenes without exploding memory usage is difficult.",
+        "The problem becomes: how can we represent a 3D scene in a way that is both fast to render and visually accurate, while being scalable and trainable efficiently?"
+      ],
+      "hypothesis": [
+        "A production web application that converts video footage of rooms into interactive 3D point cloud models and reconstructed meshes using LongSplat — NVIDIA's state-of-the-art unposed 3D Gaussian splatting.",
+        "Representing a scene as a set of anisotropic 3D Gaussians (instead of dense neural fields) allows for real-time rendering with high fidelity by leveraging rasterization-friendly primitives and GPU acceleration.",
+        "Key assumptions in that approach: a scene can be approximated as volumetric Gaussians with position, covariance (shape and orientation), color, and opacity; those Gaussians can be projected ('splatted') onto the screen efficiently; sorting and blending Gaussians in screen space is much faster than volumetric ray marching; and optimization can still converge to photorealistic results with gradient-based methods."
+      ],
+      "roles": ["User interface design", "Full-stack implementation"],
+      "outcomes": [
+        { "value": "$20K USD", "label": "In render cost savings" },
+        { "value": "+10K Hours", "label": "In worktime optimization" },
+        { "value": "+800 Hours", "label": "Of successful beta testing" }
+      ]
+    },
+    {
+      "slug": "territorio-nacional",
+      "title": "Territorio Nacional",
+      "tagline": "TerritorioNacional.mx — Transparency-first AI news platform.",
+      "coverImage": "/portfolio-imgss/territorio-main.gif",
+      "tags": ["Editorial", "Web"],
+      "challenges": [
+        "In Mexico, public trust in traditional news media has eroded significantly over the past decades. A widespread perception exists that editorial lines are influenced—directly or indirectly—by political affiliations, corporate interests, or economic dependencies.",
+        "That perception is reinforced by concentration of media ownership among a limited number of stakeholders; lack of transparency in editorial decision-making; selective framing and omission of relevant context; and increasing polarization of narratives across outlets.",
+        "Readers face information asymmetry: multiple versions of the same event, each shaped by distinct agendas. That environment generates distrust toward institutional media, difficulty identifying objective or verifiable information, reduced civic engagement from uncertainty, and increased vulnerability to misinformation and echo chambers.",
+        "The core problem is not only bias itself, but the absence of a scalable, transparent mechanism to produce and validate neutral narratives at speed and breadth."
+      ],
+      "hypothesis": [
+        "An AI-powered, fully or semi-automated digital news platform—territorionacional.mx—can reduce perceived and actual bias in news dissemination by leveraging algorithmic transparency, multi-source ingestion, and structured content generation.",
+        "The approach follows principles of algorithmic neutrality through design: by decoupling content generation from human editorial incentives, AI systems can aggregate information from diverse sources (institutional, independent, international), detect and highlight discrepancies across narratives, generate multi-perspective summaries rather than single-thread storytelling, and apply consistent rules for relevance, weighting, and inclusion.",
+        "While AI is not inherently unbiased, its bias can be measured, audited, and iterated—unlike opaque human editorial processes."
+      ],
+      "roles": [
+        "Brand design & growth",
+        "Content production pipeline automation",
+        "User interface design and development",
+        "Full-stack implementation"
+      ],
+      "outcomes": [
+        { "value": "+10.5K Readers", "label": "In 1 Month after launch" },
+        { "value": "$10K USD", "label": "Seed money raised" },
+        { "value": "+80 Articles", "label": "AI-assisted editorial" }
+      ]
+    }
+  ]
+}

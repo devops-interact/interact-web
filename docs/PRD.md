@@ -314,6 +314,12 @@ While AI is not inherently unbiased, its bias can be measured, audited, and iter
 
 ## 7. Design system
 
+### Surfaces (Aeye parity)
+
+- **Grid zone:** Black (`#000`) header with gray grid lines (`#2a2a2a`); interactive cells highlight on hover and pulse on click (white accent).
+- **Content zone:** White panels with black/gray borders (`#e5e5e5`); body copy on light surfaces for home sections §01–11.
+- **Chrome:** Boxed navigation, `[N. xx / 11] — > LABEL` section headers, title left / CTA right.
+
 ### Color (monochrome only)
 
 | Token | Value | Usage |
@@ -415,7 +421,8 @@ brew install railway
 
 ```bash
 cd /path/to/interact-web
-railway up -y
+railway init -n interact-web   # first time only
+railway up --detach
 ```
 
 - Authenticates via browser (or device code in headless environments).

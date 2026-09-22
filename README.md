@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Interact Studio Website
 
-## Getting Started
+Monochrome marketing site for **Interact**, a software development studio. Visual rhythm inspired by [Aeye](https://aeye.framer.ai/); case studies from [marcoaurelio.mx/work](https://www.marcoaurelio.mx/work).
 
-First, run the development server:
+## Docs
+
+- [docs/PRD.md](docs/PRD.md) — product requirements
+- [docs/EXECUTIVE_IMPLEMENTATION_PROMPT.md](docs/EXECUTIVE_IMPLEMENTATION_PROMPT.md) — agent implementation brief
+
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+Production start binds `0.0.0.0` and uses `PORT` (default 3000).
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy on Railway
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Install the CLI:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   brew install railway
+   # or: npm i -g @railway/cli
+   ```
 
-## Deploy on Vercel
+2. From this directory, deploy (creates/links project on first run):
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   cd /path/to/interact-web
+   railway init -n interact-web   # first time only
+   railway up --detach
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   Complete browser OAuth when prompted (or use the device-code link in headless environments).
+
+3. Optional:
+
+   ```bash
+   railway variables set NODE_ENV=production
+   railway variables set NEXT_PUBLIC_SITE_URL=https://your-domain.up.railway.app
+   railway domain
+   ```
+
+4. Link service (if needed): `railway service interact-web`
+
+5. Generate public URL: `railway domain` (or use the Railway dashboard)
+
+6. Redeploy after changes: `railway up --detach` or connect GitHub in the Railway dashboard.
+
+**Live (production):** [https://interact-web-production.up.railway.app](https://interact-web-production.up.railway.app)  
+**Dashboard:** [https://railway.com/project/c43922d6-e265-4084-9ab8-1b92b9ea7b27](https://railway.com/project/c43922d6-e265-4084-9ab8-1b92b9ea7b27)
+
+## Stack
+
+Next.js App Router, TypeScript, Tailwind CSS v4, framer-motion, content in `content/*.json`.

@@ -15,7 +15,8 @@ You are a senior front-end engineer and motion designer. Build the **Interact** 
 3. **No lorem ipsum** — use `content/*.json` as single source of truth.
 4. **Case studies** — four slugs with copy from PRD §6.
 5. **Stack:** Next.js 15 App Router, TypeScript, Tailwind v4, framer-motion, Geist fonts.
-6. **Deploy target:** Railway (`railway up -y`); `start` must use `$PORT` and `0.0.0.0`.
+6. **Deploy target:** Railway (`railway init -n interact-web   # first time only
+railway up --detach`); `start` must use `$PORT` and `0.0.0.0`.
 
 ## Reference documents
 
@@ -170,7 +171,8 @@ type SectionShellProps = {
 ```bash
 cd interact-web
 brew install railway   # or npm i -g @railway/cli
-railway up -y
+railway init -n interact-web   # first time only
+railway up --detach
 railway variables set NODE_ENV=production
 railway domain         # optional
 ```

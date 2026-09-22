@@ -1,0 +1,276 @@
+{
+  "brand": "Interact",
+  "version": "v1.0",
+  "contact": {
+    "email": "hello@interact.studio",
+    "phone": "",
+    "location": "Monterrey, MX"
+  },
+  "nav": [
+    { "label": "HOME", "href": "/" },
+    { "label": "ABOUT", "href": "/about" },
+    { "label": "WORK", "href": "/work" },
+    { "label": "SERVICES", "href": "/#section-02" },
+    { "label": "STUDIO", "href": "/#section-11" },
+    { "label": "CONTACT", "href": "/contact" }
+  ],
+  "hero": {
+    "lines": ["A software development studio", "for teams that ship."],
+    "highlight": "Studio",
+    "description": "We partner with founders and product teams to design, build, and launch digital products—one studio accountable from first workshop to production deploy.",
+    "ctaPrimary": "START A PROJECT",
+    "ctaSecondary": "VIEW WORK",
+    "ctaTertiary": "SEE CASE STUDIES",
+    "trust": {
+      "label": "Shipped with clients",
+      "rating": "$60K+ raised",
+      "subrating": "Across 4 live products"
+    },
+    "partners": ["Prevify", "Itemz.gg", "Splattr", "Territorio Nacional"]
+  },
+  "pillars": {
+    "label": "SERVICES",
+    "title": ["Less vendor juggling.", "More shipped work."],
+    "cta": "WORK WITH US",
+    "items": [
+      {
+        "index": "001",
+        "title": "Product & UX",
+        "body": "Positioning, flows, and interfaces that make sense to users and stakeholders—before and during build.",
+        "chip": "Strategy + design"
+      },
+      {
+        "index": "002",
+        "title": "Engineering",
+        "body": "Production web and product code, design systems, APIs, and the infrastructure to deploy with confidence.",
+        "chip": "Full-stack delivery"
+      },
+      {
+        "index": "003",
+        "title": "Brand & launch",
+        "body": "Identity, narrative, and launch surfaces so you can recruit, fundraise, and onboard early users.",
+        "chip": "Go-to-market ready"
+      }
+    ]
+  },
+  "velocity": {
+    "label": "TRACK RECORD",
+    "title": ["Faster together.", "Fewer handoffs."],
+    "cta": "VIEW WORK",
+    "stats": [
+      { "value": "2 mo", "label": "Prevify design-to-deploy" },
+      { "value": "10.5K", "label": "Readers in month one" },
+      { "value": "4K+", "label": "Itemz community" },
+      { "value": "4", "label": "Products in market" }
+    ],
+    "chart": {
+      "beforeLabel": "MULTIPLE VENDORS",
+      "afterLabel": "ONE STUDIO SQUAD"
+    }
+  },
+  "layers": {
+    "label": "CAPABILITIES",
+    "title": ["Three phases.", "One partnership."],
+    "cta": "OUR PROCESS",
+    "items": [
+      {
+        "index": "001",
+        "tags": ["DISCOVER"],
+        "title": "Discover",
+        "body": "Align on users, constraints, and success metrics. Leave with a sharp scope and a plan you can fund."
+      },
+      {
+        "index": "002",
+        "tags": ["BUILD"],
+        "title": "Design & build",
+        "body": "Prototype and ship in tight loops—design decisions and implementation stay in the same room."
+      },
+      {
+        "index": "003",
+        "tags": ["LAUNCH"],
+        "title": "Launch & handoff",
+        "body": "Deploy, document, and transition—or stay embedded as you grow. You own the code."
+      }
+    ],
+    "principles": [
+      { "title": "Embed or own", "body": "We join your Slack and repo, or run a dedicated workstream end-to-end." },
+      { "title": "Transparent scope", "body": "Weekly demos and clear milestones—no surprise change orders." },
+      { "title": "Built to maintain", "body": "Patterns and docs your team can extend after we step back." }
+    ]
+  },
+  "process": {
+    "label": "HOW WE WORK",
+    "title": ["Understand the flow.", "See how we partner."],
+    "cta": "START A PROJECT",
+    "steps": [
+      { "index": "001", "title": "Kickoff", "body": "Goals, users, risks, and timeline in a focused discovery workshop." },
+      { "index": "002", "title": "Prototype", "body": "Clickable UX and technical spikes to validate before full build." },
+      { "index": "003", "title": "Build", "body": "Production features, design system, and infra with weekly demos." },
+      { "index": "004", "title": "Launch", "body": "Release, measure, iterate—and hand off with documentation." }
+    ]
+  },
+  "kickoff": {
+    "label": "ENGAGEMENT",
+    "title": ["Clear from day one.", "No mystery scope."],
+    "cta": "REQUEST A BRIEF",
+    "tabs": ["Brief", "Timeline", "Deliverables"],
+    "samples": {
+      "Brief": "# Project brief — Acme\n\n## Goals\n- MVP for investor demo in 8 weeks\n- Mobile-first onboarding\n\n## Out of scope\n- Native apps (phase 2)\n\n## Success\n- 50 beta signups at launch",
+      "Timeline": "Week 1–2  Discovery + UX flows\nWeek 3–4  Design system + core screens\nWeek 5–7  API + frontend build\nWeek 8     Staging + launch support",
+      "Deliverables": "• Figma source + component library\n• Next.js app in your GitHub org\n• Railway / Vercel deploy pipeline\n• README + handoff session"
+    }
+  },
+  "playbook": {
+    "label": "CAPABILITIES",
+    "title": ["What we deliver.", "End to end."],
+    "items": [
+      {
+        "index": "001",
+        "title": "Discovery sprint",
+        "tags": ["workshop", "scope"],
+        "category": "Discover",
+        "description": "Stakeholder interviews, user flows, and a fixed-scope proposal."
+      },
+      {
+        "index": "002",
+        "title": "Architecture",
+        "tags": ["stack", "scale"],
+        "category": "Build",
+        "description": "Stack choices, data model, and deployment plan aligned to your team."
+      },
+      {
+        "index": "003",
+        "title": "Design system",
+        "tags": ["ui", "brand"],
+        "category": "Design",
+        "description": "Tokens, components, and marketing surfaces in one system."
+      },
+      {
+        "index": "004",
+        "title": "Launch support",
+        "tags": ["release", "growth"],
+        "category": "Ship",
+        "description": "QA, analytics hooks, and launch checklist with your team."
+      }
+    ]
+  },
+  "testimonials": {
+    "label": "CLIENTS",
+    "title": ["Less talk, more shipping.", "What partners say."],
+    "items": [
+      {
+        "type": "tweet",
+        "name": "Founder",
+        "handle": "@prevify",
+        "text": "One studio owned brand, product, and engineering—we went live in two months and closed our pre-seed with a real product.",
+        "date": "Mar 18, 2025"
+      },
+      {
+        "type": "quote",
+        "name": "Product lead",
+        "role": "Marketplace",
+        "text": "They ran research, designed the marketplace, and shipped the stack. We focused on community while Interact focused on delivery."
+      },
+      {
+        "type": "tweet",
+        "name": "Engineering",
+        "handle": "@splattr",
+        "text": "Complex 3D pipeline in the browser—they stayed in the weeds with us until beta was stable.",
+        "date": "Jul 08, 2026"
+      },
+      {
+        "type": "quote",
+        "name": "Editor",
+        "role": "Media",
+        "text": "Editorial automation without losing transparency—they built the pipeline we could audit and improve weekly."
+      }
+    ]
+  },
+  "engagement": {
+    "label": "ENGAGEMENT",
+    "title": ["Flexible models.", "Built around your stage."],
+    "toggle": ["Fixed scope", "Monthly retainer"],
+    "tiers": [
+      {
+        "name": "Discovery sprint",
+        "description": "Validate idea and scope before a full build",
+        "sprintPrice": "Inquire",
+        "retainerPrice": "Inquire",
+        "featured": false,
+        "features": ["5-day workshop", "UX prototype", "Technical spike", "Fixed estimate for build"]
+      },
+      {
+        "name": "Studio build",
+        "description": "End-to-end design and development to launch",
+        "sprintPrice": "Inquire",
+        "retainerPrice": "Inquire",
+        "featured": true,
+        "features": [
+          "Everything in Discovery",
+          "Full-stack implementation",
+          "Weekly demos",
+          "Brand & launch assets"
+        ]
+      },
+      {
+        "name": "Embedded squad",
+        "description": "Ongoing capacity alongside your team",
+        "sprintPrice": "Inquire",
+        "retainerPrice": "Inquire",
+        "featured": false,
+        "features": [
+          "Dedicated designers & engineers",
+          "Your tools and rituals",
+          "Roadmap pairing",
+          "Long-term iteration"
+        ]
+      }
+    ]
+  },
+  "shipLog": {
+    "label": "LAUNCH LOG",
+    "title": ["We ship with clients.", "Recent launches."],
+    "cta": "VIEW ALL WORK",
+    "entries": [
+      {
+        "date": "MAR 18, 2025",
+        "title": "Prevify — compliance product live",
+        "body": "Design to deploy in two months; $40K pre-seed raised with production software."
+      },
+      {
+        "date": "NOV 24, 2025",
+        "title": "Territorio Nacional",
+        "body": "+10.5K readers in the first month; 80+ articles through an auditable editorial pipeline."
+      },
+      {
+        "date": "DEC 07, 2024",
+        "title": "Splattr beta",
+        "body": "3D reconstruction web app—800 hours of successful beta and major render savings."
+      },
+      {
+        "date": "JUN 29, 2026",
+        "title": "Itemz.gg community",
+        "body": "P2P marketplace crossed 4,000 members with sponsorship-backed growth."
+      }
+    ]
+  },
+  "insightsSection": {
+    "label": "STUDIO",
+    "title": ["Notes from the studio.", "How we build."],
+    "cta": "READ ALL"
+  },
+  "faqSection": {
+    "label": "FAQS",
+    "title": ["Common questions.", "Working with us."]
+  },
+  "cta": {
+    "eyebrow": "Tell us what you're building",
+    "lines": ["Ready to", "start a project?"],
+    "button": "START A PROJECT"
+  },
+  "footer": {
+    "newsletter": "Studio notes, launch stories, and process—once in a while, no spam.",
+    "copyright": "© Interact 2026 — Software development studio"
+  },
+  "marqueeTags": ["#studio", "#shipped", "#design", "#engineering"]
+}

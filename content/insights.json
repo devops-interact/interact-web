@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "title": "What a discovery sprint actually delivers",
+      "category": "Process",
+      "date": "Jun 29, 2026",
+      "excerpt": "Not a deck—a prototype, a scope boundary, and a build estimate your team can approve.",
+      "href": "/#section-11",
+      "featured": true
+    },
+    {
+      "title": "Why one team should own design and code",
+      "category": "Studio",
+      "date": "Jun 29, 2026",
+      "excerpt": "Handoffs between agencies slow shipping. We keep UX decisions tied to implementation.",
+      "href": "/#section-11",
+      "featured": false
+    },
+    {
+      "title": "Shipping an MVP investors can click",
+      "category": "Founders",
+      "date": "Jun 29, 2026",
+      "excerpt": "Lessons from taking client products from hypothesis to funded launches in weeks.",
+      "href": "/#section-11",
+      "featured": false
+    }
+  ]
+}

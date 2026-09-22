@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "id": "001",
+      "question": "What does Interact actually do?",
+      "answer": "We are a software development studio. You hire us to design, build, and launch digital products—often from zero to production—with one team covering UX, engineering, and launch support."
+    },
+    {
+      "id": "002",
+      "question": "Who owns the code and design files?",
+      "answer": "You do. We work in your GitHub org and Figma workspace when possible, and hand off repositories, assets, and documentation at the end of an engagement."
+    },
+    {
+      "id": "003",
+      "question": "How do projects usually start?",
+      "answer": "Most begin with a discovery sprint or scoping call: goals, timeline, budget shape, and whether we embed with your team or own a workstream. Then we propose a fixed scope or monthly retainer."
+    },
+    {
+      "id": "004",
+      "question": "Can you work with our existing developers?",
+      "answer": "Yes. We often pair with in-house engineers on architecture and design systems, or take a vertical slice (e.g. marketing site + admin) while your team owns the core platform."
+    },
+    {
+      "id": "005",
+      "question": "What industries have you shipped in?",
+      "answer": "Compliance (Prevify), marketplaces (Itemz.gg), 3D tooling (Splattr), and editorial/media (Territorio Nacional). We take on new domains when the problem is a product build, not staff augmentation alone."
+    }
+  ]
+}
