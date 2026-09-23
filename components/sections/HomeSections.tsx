@@ -10,9 +10,9 @@ import { TestimonialStrip } from "@/components/ui/TestimonialStrip";
 import { ChangelogTimeline } from "@/components/ui/ChangelogTimeline";
 import { CapabilitiesSplit } from "@/components/ui/CapabilitiesSplit";
 import { ProcessGrid } from "@/components/ui/ProcessGrid";
-import { InsightsGrid } from "@/components/ui/InsightsGrid";
+import Image from "next/image";
 import { PartnerStrip } from "@/components/sections/PartnerStrip";
-import { getSite, getFaq, getInsights, getWorkProjects } from "@/lib/content";
+import { getSite, getFaq, getWorkProjects } from "@/lib/content";
 import { WorkCard } from "@/components/work/WorkCard";
 import { useState } from "react";
 import { Marquee } from "@/components/layout/Marquee";
@@ -413,26 +413,52 @@ export function Section10ShipLog() {
 
 export function Section11InsightsFaq() {
   const site = getSite();
-  const posts = getInsights();
+  const { studioSection } = site;
   const faq = getFaq();
 
   return (
     <>
-      <SectionShell
-        index={11}
-        label={site.insightsSection.label}
-        titleLines={[
-          site.insightsSection.title[0],
-          site.insightsSection.title[1],
-        ]}
-        action={
-          <Button href="/#section-11" variant="secondary">
-            {site.insightsSection.cta}
-          </Button>
-        }
+      <section
+        id="section-11"
+        className="surface-panel border-t border-[var(--border-panel)]"
       >
-        <InsightsGrid posts={posts} />
-      </SectionShell>
+        <div className="mx-auto max-w-[1400px]">
+          <div className="grid gap-0 md:grid-cols-2">
+            <div className="flex flex-col justify-center border-b border-[var(--border-panel)] p-8 md:border-b-0 md:border-r md:p-12 lg:p-16">
+              <p className="font-mono text-[11px] uppercase text-muted-panel">
+                [N. 11] — &gt; {studioSection.label}
+              </p>
+              <h2 className="mt-6 text-3xl leading-tight tracking-tight md:text-5xl">
+                {studioSection.title[0]}
+                <br />
+                <span className="text-muted-panel">{studioSection.title[1]}</span>
+              </h2>
+              <address className="mt-8 max-w-md text-sm leading-relaxed text-muted-panel not-italic">
+                {studioSection.address}
+              </address>
+              <p className="mt-6 font-mono text-[10px] tracking-widest text-muted-panel">
+                BY APPOINTMENT ·{" "}
+                <a
+                  href={`mailto:${site.contact.email}`}
+                  className="text-[var(--text-on-panel)] hover:underline"
+                >
+                  {site.contact.email}
+                </a>
+              </p>
+            </div>
+            <div className="relative min-h-[280px] border-b border-[var(--border-panel)] md:min-h-[420px] md:border-b-0">
+              <Image
+                src={studioSection.image}
+                alt={studioSection.imageAlt}
+                fill
+                className="object-cover grayscale"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority={false}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="surface-panel border-t border-[var(--border-panel)] py-16 md:py-24">
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">

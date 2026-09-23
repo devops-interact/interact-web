@@ -5,7 +5,7 @@
   "contact": {
     "email": "hello@interact.studio",
     "phone": "",
-    "location": "Monterrey, MX"
+    "location": "Av. José Vasconcelos No. 150, Piso 1, Col. Fátima, San Pedro Garza García, Nuevo León, C.P. 66220."
   },
   "nav": [
     { "label": "HOME", "href": "/" },
@@ -254,10 +254,12 @@
       }
     ]
   },
-  "insightsSection": {
+  "studioSection": {
     "label": "STUDIO",
-    "title": ["Notes from the studio.", "How we build."],
-    "cta": "READ ALL"
+    "title": ["Where we build.", "San Pedro Garza García."],
+    "address": "Av. José Vasconcelos No. 150, Piso 1, Col. Fátima, San Pedro Garza García, Nuevo León, C.P. 66220.",
+    "image": "/studio-placeholder.svg",
+    "imageAlt": "Interact studio — placeholder"
   },
   "faqSection": {
     "label": "FAQS",
