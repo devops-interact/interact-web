@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { getSite } from "@/lib/content";
+import { BrandLogo } from "./BrandLogo";
 import { InteractiveGrid } from "./InteractiveGrid";
 
 function navMatch(href: string, pathname: string) {
@@ -13,7 +14,7 @@ function navMatch(href: string, pathname: string) {
 }
 
 export function SiteHeader({ showScrollCue = true }: { showScrollCue?: boolean }) {
-  const { brand, version, nav } = getSite();
+  const { version, nav } = getSite();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -54,10 +55,7 @@ export function SiteHeader({ showScrollCue = true }: { showScrollCue?: boolean }
 
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-lg" aria-hidden>✦</span>
-              <Link href="/" className="text-xl font-medium tracking-tight">
-                {brand}
-              </Link>
+              <BrandLogo variant="onDark" height={32} />
               <span className="border border-white/20 px-2 py-0.5 font-mono text-[9px] text-white/50">
                 {version}
               </span>

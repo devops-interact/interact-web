@@ -1,8 +1,9 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { getSite } from "@/lib/content";
 
 export function Footer() {
-  const { brand, contact, footer, nav } = getSite();
+  const { contact, footer, nav } = getSite();
 
   return (
     <footer className="surface-panel border-t border-[var(--border-panel)]">
@@ -53,7 +54,7 @@ export function Footer() {
             </ul>
           </div>
           <div className="p-6">
-            <p className="font-mono text-sm tracking-widest">{brand}</p>
+            <BrandLogo variant="onLight" height={24} />
             <p className="mt-4 text-sm text-muted-panel">{footer.copyright}</p>
           </div>
         </div>

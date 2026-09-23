@@ -1,5 +1,6 @@
 {
   "brand": "Interact",
+  "logo": "/interact-logo.png",
   "version": "v1.0",
   "contact": {
     "email": "hello@interact.studio",

@@ -15,6 +15,7 @@ import { PartnerStrip } from "@/components/sections/PartnerStrip";
 import { getSite, getFaq, getInsights } from "@/lib/content";
 import { useState } from "react";
 import { Marquee } from "@/components/layout/Marquee";
+import { GridBand } from "@/components/layout/GridBand";
 
 export function Section01Hero() {
   const { hero } = getSite();
@@ -330,8 +331,8 @@ export function Section11InsightsFaq() {
         </div>
       </section>
 
-      <section className="surface-grid relative py-24">
-        <div className="relative z-10 mx-auto max-w-[900px] border border-white/20 bg-white px-8 py-16 text-center text-[var(--text-on-panel)]">
+      <GridBand className="py-24" minHeight="min-h-[360px]">
+        <div className="mx-auto max-w-[900px] border border-white/20 bg-white px-8 py-16 text-center text-[var(--text-on-panel)]">
           <p className="font-mono text-[10px] tracking-widest text-muted-panel">
             {site.cta.eyebrow}
           </p>
@@ -345,7 +346,7 @@ export function Section11InsightsFaq() {
           </div>
         </div>
         <Marquee />
-      </section>
+      </GridBand>
     </>
   );
 }
