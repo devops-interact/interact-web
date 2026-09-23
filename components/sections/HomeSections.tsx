@@ -58,29 +58,30 @@ export function Section01Hero() {
 }
 
 export function SectionAbout() {
+  const { aboutSection } = getSite();
+
   return (
-    <section
-      id="about"
-      className="surface-panel border-b border-[var(--border-panel)] py-16 md:py-24"
-    >
-      <div className="mx-auto max-w-[1400px] px-4 md:px-8">
-        <p className="font-mono text-[11px] text-muted-panel">&gt; About</p>
-        <h2 className="mt-4 max-w-3xl text-3xl leading-tight md:text-5xl">
-          We build software with you—not software you subscribe to.
-        </h2>
-        <div className="mt-8 grid gap-8 text-sm leading-relaxed text-muted-panel md:grid-cols-2">
-          <p>
-            Interact is a development studio: you hire us to ship a product. We handle
-            brand, product direction, UX, and engineering in one accountable team—often
-            from first workshop through production launch.
-          </p>
-          <p>
-            Our client work includes Prevify, Itemz.gg, Splattr, and Territorio Nacional—each
-            shipped with measurable outcomes in compliance, marketplaces, 3D, and media.
-            Based in Monterrey; we work with founders and product teams remotely.
-          </p>
+    <section id="about" className="border-b border-white/10">
+      <GridBand className="py-16 md:py-24" minHeight="min-h-[360px]">
+        <div className="mx-auto max-w-[1400px] px-4 text-white md:px-8">
+          <p className="font-mono text-[11px] text-white/50">&gt; About</p>
+          <h2 className="mt-4 max-w-4xl text-2xl leading-snug tracking-tight text-white md:text-3xl lg:text-4xl">
+            {aboutSection.headline}
+          </h2>
+          <div className="mt-8 grid gap-8 text-sm leading-relaxed text-white/75 md:grid-cols-2">
+            <p>
+              Interact is a development studio: you hire us to ship a product. We handle
+              brand, product direction, UX, and engineering in one accountable team—often
+              from first workshop through production launch.
+            </p>
+            <p>
+              Our client work includes Prevify, Itemz.gg, Splattr, and Territorio Nacional—each
+              shipped with measurable outcomes in compliance, marketplaces, 3D, and media.
+              Based in Monterrey; we work with founders and product teams remotely.
+            </p>
+          </div>
         </div>
-      </div>
+      </GridBand>
     </section>
   );
 }

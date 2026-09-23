@@ -27,6 +27,9 @@
     },
     "partners": ["Prevify", "Itemz.gg", "Splattr", "Territorio Nacional"]
   },
+  "aboutSection": {
+    "headline": "Building the technological foundation of a core business model requires aligning data infrastructure, cloud capabilities, and core platforms to support scalable operations"
+  },
   "pillars": {
     "label": "SERVICES",
     "title": ["Less vendor juggling.", "More shipped work."],
