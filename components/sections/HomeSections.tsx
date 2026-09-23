@@ -12,7 +12,8 @@ import { CapabilitiesSplit } from "@/components/ui/CapabilitiesSplit";
 import { ProcessGrid } from "@/components/ui/ProcessGrid";
 import { InsightsGrid } from "@/components/ui/InsightsGrid";
 import { PartnerStrip } from "@/components/sections/PartnerStrip";
-import { getSite, getFaq, getInsights } from "@/lib/content";
+import { getSite, getFaq, getInsights, getWorkProjects } from "@/lib/content";
+import { WorkCard } from "@/components/work/WorkCard";
 import { useState } from "react";
 import { Marquee } from "@/components/layout/Marquee";
 import { GridBand } from "@/components/layout/GridBand";
@@ -25,7 +26,7 @@ export function Section01Hero() {
       <div className="mx-auto max-w-[1400px]">
         <div className="grid gap-0 md:grid-cols-2">
           <div className="border-b border-[var(--border-panel)] p-8 md:border-b-0 md:border-r md:p-12 lg:p-16">
-            <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
+            <h1 className="text-4xl leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
               {hero.lines[0]}
               <br />
               <span className="font-mono text-[0.9em]">[{hero.highlight}]</span>{" "}
@@ -42,9 +43,9 @@ export function Section01Hero() {
               {hero.description}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button href="/contact">{hero.ctaPrimary}</Button>
+              <Button href="/#contact">{hero.ctaPrimary}</Button>
               <Link
-                href="/work"
+                href="/#work"
                 className="flex items-center gap-2 font-mono text-[10px] tracking-widest text-muted-panel hover:text-[var(--text-on-panel)]"
               >
                 <span className="inline-block h-0 w-0 border-y-[5px] border-l-[8px] border-y-transparent border-l-[var(--text-on-panel)]" />
@@ -59,6 +60,124 @@ export function Section01Hero() {
   );
 }
 
+export function SectionAbout() {
+  return (
+    <section
+      id="about"
+      className="surface-panel border-b border-[var(--border-panel)] py-16 md:py-24"
+    >
+      <div className="mx-auto max-w-[1400px] px-4 md:px-8">
+        <p className="font-mono text-[11px] text-muted-panel">&gt; About</p>
+        <h2 className="mt-4 max-w-3xl text-3xl leading-tight md:text-5xl">
+          We build software with you—not software you subscribe to.
+        </h2>
+        <div className="mt-8 grid gap-8 text-sm leading-relaxed text-muted-panel md:grid-cols-2">
+          <p>
+            Interact is a development studio: you hire us to ship a product. We handle
+            brand, product direction, UX, and engineering in one accountable team—often
+            from first workshop through production launch.
+          </p>
+          <p>
+            Our client work includes Prevify, Itemz.gg, Splattr, and Territorio Nacional—each
+            shipped with measurable outcomes in compliance, marketplaces, 3D, and media.
+            Based in Monterrey; we work with founders and product teams remotely.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function SectionWork() {
+  const projects = getWorkProjects();
+
+  return (
+    <section
+      id="work"
+      className="surface-panel border-b border-[var(--border-panel)] py-16 md:py-24"
+    >
+      <div className="mx-auto max-w-[1400px] px-4 md:px-8">
+        <p className="font-mono text-[11px] text-muted-panel">[N. WORK]</p>
+        <h2 className="mt-4 text-3xl md:text-5xl">Client work</h2>
+        <p className="mt-4 max-w-xl text-muted-panel">
+          Products we&apos;ve designed and built with founders and teams—from compliance
+          and marketplaces to 3D pipelines and editorial platforms.
+        </p>
+        <div className="mt-12 grid gap-0 border border-[var(--border-panel)] md:grid-cols-2">
+          {projects.map((p) => (
+            <WorkCard key={p.slug} project={p} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function SectionContact() {
+  const { contact } = getSite();
+
+  return (
+    <section
+      id="contact"
+      className="surface-panel border-t border-[var(--border-panel)] py-16 md:py-24"
+    >
+      <div className="mx-auto max-w-xl px-4 md:px-8">
+        <p className="font-mono text-[11px] text-muted-panel">&gt; Contact</p>
+        <h2 className="mt-4 text-3xl md:text-5xl">Start a project</h2>
+        <p className="mt-4 text-muted-panel">
+          Share what you&apos;re building, your timeline, and how you&apos;d like to work
+          together. We typically respond within two business days.
+        </p>
+        <form className="mt-10 space-y-6" action={`mailto:${contact.email}`} method="get">
+          <div>
+            <label className="font-mono text-[10px] tracking-widest text-muted-panel">
+              NAME
+            </label>
+            <input
+              name="subject"
+              className="mt-2 w-full border border-[var(--border-panel)] bg-transparent px-4 py-3 text-sm outline-none focus:border-[var(--text-on-panel)]"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label className="font-mono text-[10px] tracking-widest text-muted-panel">
+              EMAIL
+            </label>
+            <input
+              type="email"
+              className="mt-2 w-full border border-[var(--border-panel)] bg-transparent px-4 py-3 text-sm outline-none focus:border-[var(--text-on-panel)]"
+              placeholder="you@company.com"
+            />
+          </div>
+          <div>
+            <label className="font-mono text-[10px] tracking-widest text-muted-panel">
+              MESSAGE
+            </label>
+            <textarea
+              rows={5}
+              className="mt-2 w-full border border-[var(--border-panel)] bg-transparent px-4 py-3 text-sm outline-none focus:border-[var(--text-on-panel)]"
+              placeholder="What are you building?"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-[var(--text-on-panel)] py-3 font-mono text-xs tracking-widest text-white"
+          >
+            SEND →
+          </button>
+        </form>
+        <p className="mt-8 font-mono text-xs text-muted-panel">
+          Or email{" "}
+          <a href={`mailto:${contact.email}`} className="text-[var(--text-on-panel)]">
+            {contact.email}
+          </a>
+          {contact.location ? ` · ${contact.location}` : ""}
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export function Section02Pillars() {
   const { pillars } = getSite();
 
@@ -67,7 +186,7 @@ export function Section02Pillars() {
       index={2}
       label={pillars.label}
       titleLines={[pillars.title[0], pillars.title[1]]}
-      action={<Button href="/contact">{pillars.cta}</Button>}
+      action={<Button href="/#contact">{pillars.cta}</Button>}
     >
       <div className="grid border-t border-l border-[var(--border-panel)] sm:grid-cols-3">
         {pillars.items.map((item) => (
@@ -96,7 +215,7 @@ export function Section03Velocity() {
       index={3}
       label={velocity.label}
       titleLines={[velocity.title[0], velocity.title[1]]}
-      action={<Button href="/work" variant="secondary">{velocity.cta}</Button>}
+      action={<Button href="/#work" variant="secondary">{velocity.cta}</Button>}
     >
       <div className="mb-0 grid grid-cols-2 border border-[var(--border-panel)] md:grid-cols-4">
         {velocity.stats.map((s) => (
@@ -150,7 +269,7 @@ export function Section05Process() {
       index={5}
       label={process.label}
       titleLines={[process.title[0], process.title[1]]}
-      action={<Button href="/contact">{process.cta}</Button>}
+      action={<Button href="/#contact">{process.cta}</Button>}
     >
       <ProcessGrid steps={process.steps} />
     </SectionShell>
@@ -165,7 +284,7 @@ export function Section06Code() {
       index={6}
       label={kickoff.label}
       titleLines={[kickoff.title[0], kickoff.title[1]]}
-      action={<Button href="/contact">{kickoff.cta}</Button>}
+      action={<Button href="/#contact">{kickoff.cta}</Button>}
     >
       <CodeTabs tabs={kickoff.tabs} samples={kickoff.samples} />
     </SectionShell>
@@ -185,7 +304,7 @@ export function Section07Playbook() {
         {playbook.items.map((doc) => (
           <Link
             key={doc.index}
-            href="/about"
+            href="/#about"
             className="group border-b border-r border-[var(--border-panel)] p-8 last:border-b-0 sm:even:border-r-0 sm:[&:nth-child(odd)]:border-r"
           >
             <p className="font-mono text-xs text-muted-panel">// {doc.index}</p>
@@ -265,7 +384,7 @@ export function Section09Engagement() {
                 <li key={f}>— {f}</li>
               ))}
             </ul>
-            <Button href="/contact" className="mt-8 w-full justify-center">
+            <Button href="/#contact" className="mt-8 w-full justify-center">
               INQUIRE
             </Button>
           </div>
@@ -284,7 +403,7 @@ export function Section10ShipLog() {
       label={shipLog.label}
       titleLines={[shipLog.title[0], shipLog.title[1]]}
       action={
-        <Button href="/work" variant="secondary">{shipLog.cta}</Button>
+        <Button href="/#work" variant="secondary">{shipLog.cta}</Button>
       }
     >
       <ChangelogTimeline entries={shipLog.entries} />
@@ -320,7 +439,7 @@ export function Section11InsightsFaq() {
           <p className="font-mono text-[11px] uppercase text-muted-panel">
             [N. 11 / 11] — &gt; {site.faqSection.label}
           </p>
-          <h2 className="mt-6 text-3xl font-semibold md:text-5xl">
+          <h2 className="mt-6 text-3xl md:text-5xl">
             {site.faqSection.title[0]}
             <br />
             <span className="text-muted-panel">{site.faqSection.title[1]}</span>
@@ -336,13 +455,13 @@ export function Section11InsightsFaq() {
           <p className="font-mono text-[10px] tracking-widest text-muted-panel">
             {site.cta.eyebrow}
           </p>
-          <h2 className="mt-6 text-4xl font-semibold md:text-5xl">
+          <h2 className="mt-6 text-4xl md:text-5xl">
             {site.cta.lines[0]}
             <br />
             {site.cta.lines[1]}
           </h2>
           <div className="mt-10 flex justify-center">
-            <Button href="/contact">{site.cta.button}</Button>
+            <Button href="/#contact">{site.cta.button}</Button>
           </div>
         </div>
         <Marquee />

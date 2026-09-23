@@ -9,11 +9,10 @@
   },
   "nav": [
     { "label": "HOME", "href": "/" },
-    { "label": "ABOUT", "href": "/about" },
-    { "label": "WORK", "href": "/work" },
+    { "label": "ABOUT", "href": "/#about" },
+    { "label": "WORK", "href": "/#work" },
     { "label": "SERVICES", "href": "/#section-02" },
-    { "label": "STUDIO", "href": "/#section-11" },
-    { "label": "CONTACT", "href": "/contact" }
+    { "label": "STUDIO", "href": "/#section-11" }
   ],
   "hero": {
     "lines": ["A software development studio", "for teams that ship."],

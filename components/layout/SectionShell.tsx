@@ -52,7 +52,7 @@ export function SectionShell({
               [N. {padded} / {total}] — &gt; {label}
             </p>
             <h2
-              className={`mt-6 max-w-2xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl ${
+              className={`mt-6 max-w-2xl text-3xl leading-tight tracking-tight md:text-5xl ${
                 dark ? "text-white" : "text-[var(--text-on-panel)]"
               }`}
             >
