@@ -9,7 +9,6 @@ import {
   Section08Testimonials,
   Section09Engagement,
   Section11InsightsFaq,
-  SectionContact,
 } from "@/components/sections/HomeSections";
 
 export default function Home() {
@@ -25,7 +24,6 @@ export default function Home() {
         <Section08Testimonials />
         <Section09Engagement />
         <Section11InsightsFaq />
-        <SectionContact />
       </main>
       <Footer />
     </>

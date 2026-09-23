@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { getSite } from "@/lib/content";
+import { getContactMailto, getSite } from "@/lib/content";
 import { BrandLogo } from "./BrandLogo";
 import { InteractiveGrid } from "./InteractiveGrid";
 
@@ -61,7 +61,7 @@ export function SiteHeader({
 
           <div className="flex items-center gap-3">
             <Link
-              href="/#contact"
+              href={getContactMailto()}
               className="hidden items-center gap-2 border border-white/30 bg-white px-4 py-2 font-mono text-[10px] tracking-widest text-black md:flex"
             >
               <span aria-hidden>↗</span> CONTACT US
@@ -91,7 +91,7 @@ export function SiteHeader({
               </Link>
             ))}
             <Link
-              href="/#contact"
+              href={getContactMailto()}
               className="mt-4 inline-flex items-center gap-2 border border-white/30 bg-white px-4 py-2 font-mono text-[10px] tracking-widest text-black"
               onClick={() => setOpen(false)}
             >

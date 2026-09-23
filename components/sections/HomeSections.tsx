@@ -12,7 +12,7 @@ import { CapabilitiesSplit } from "@/components/ui/CapabilitiesSplit";
 import { ProcessGrid } from "@/components/ui/ProcessGrid";
 import Image from "next/image";
 import { PartnerStrip } from "@/components/sections/PartnerStrip";
-import { getSite, getFaq, getWorkProjects } from "@/lib/content";
+import { getContactMailto, getSite, getFaq, getWorkProjects } from "@/lib/content";
 import { WorkCard } from "@/components/work/WorkCard";
 import { useState } from "react";
 import { Marquee } from "@/components/layout/Marquee";
@@ -43,7 +43,7 @@ export function Section01Hero() {
               {hero.description}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button href="/#contact">{hero.ctaPrimary}</Button>
+              <Button href={getContactMailto()}>{hero.ctaPrimary}</Button>
               <Link
                 href="/#work"
                 className="flex items-center gap-2 font-mono text-[10px] tracking-widest text-muted-panel hover:text-[var(--text-on-panel)]"
@@ -113,71 +113,6 @@ export function SectionWork() {
   );
 }
 
-export function SectionContact() {
-  const { contact } = getSite();
-
-  return (
-    <section
-      id="contact"
-      className="surface-panel border-t border-[var(--border-panel)] py-16 md:py-24"
-    >
-      <div className="mx-auto max-w-xl px-4 md:px-8">
-        <p className="font-mono text-[11px] text-muted-panel">&gt; Contact</p>
-        <h2 className="mt-4 text-3xl md:text-5xl">Start a project</h2>
-        <p className="mt-4 text-muted-panel">
-          Share what you&apos;re building, your timeline, and how you&apos;d like to work
-          together. We typically respond within two business days.
-        </p>
-        <form className="mt-10 space-y-6" action={`mailto:${contact.email}`} method="get">
-          <div>
-            <label className="font-mono text-[10px] tracking-widest text-muted-panel">
-              NAME
-            </label>
-            <input
-              name="subject"
-              className="mt-2 w-full border border-[var(--border-panel)] bg-transparent px-4 py-3 text-sm outline-none focus:border-[var(--text-on-panel)]"
-              placeholder="Your name"
-            />
-          </div>
-          <div>
-            <label className="font-mono text-[10px] tracking-widest text-muted-panel">
-              EMAIL
-            </label>
-            <input
-              type="email"
-              className="mt-2 w-full border border-[var(--border-panel)] bg-transparent px-4 py-3 text-sm outline-none focus:border-[var(--text-on-panel)]"
-              placeholder="you@company.com"
-            />
-          </div>
-          <div>
-            <label className="font-mono text-[10px] tracking-widest text-muted-panel">
-              MESSAGE
-            </label>
-            <textarea
-              rows={5}
-              className="mt-2 w-full border border-[var(--border-panel)] bg-transparent px-4 py-3 text-sm outline-none focus:border-[var(--text-on-panel)]"
-              placeholder="What are you building?"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-[var(--text-on-panel)] py-3 font-mono text-xs tracking-widest text-white"
-          >
-            SEND →
-          </button>
-        </form>
-        <p className="mt-8 font-mono text-xs text-muted-panel">
-          Or email{" "}
-          <a href={`mailto:${contact.email}`} className="text-[var(--text-on-panel)]">
-            {contact.email}
-          </a>
-          {contact.location ? ` · ${contact.location}` : ""}
-        </p>
-      </div>
-    </section>
-  );
-}
-
 export function Section02Pillars() {
   const { pillars } = getSite();
 
@@ -186,7 +121,7 @@ export function Section02Pillars() {
       index={2}
       label={pillars.label}
       titleLines={[pillars.title[0], pillars.title[1]]}
-      action={<Button href="/#contact">{pillars.cta}</Button>}
+      action={<Button href={getContactMailto()}>{pillars.cta}</Button>}
     >
       <div className="grid border-t border-l border-[var(--border-panel)] sm:grid-cols-3">
         {pillars.items.map((item) => (
@@ -269,7 +204,7 @@ export function Section05Process() {
       index={5}
       label={process.label}
       titleLines={[process.title[0], process.title[1]]}
-      action={<Button href="/#contact">{process.cta}</Button>}
+      action={<Button href={getContactMailto()}>{process.cta}</Button>}
     >
       <ProcessGrid steps={process.steps} />
     </SectionShell>
@@ -284,7 +219,7 @@ export function Section06Code() {
       index={6}
       label={kickoff.label}
       titleLines={[kickoff.title[0], kickoff.title[1]]}
-      action={<Button href="/#contact">{kickoff.cta}</Button>}
+      action={<Button href={getContactMailto()}>{kickoff.cta}</Button>}
     >
       <CodeTabs tabs={kickoff.tabs} samples={kickoff.samples} />
     </SectionShell>
@@ -384,7 +319,7 @@ export function Section09Engagement() {
                 <li key={f}>— {f}</li>
               ))}
             </ul>
-            <Button href="/#contact" className="mt-8 w-full justify-center">
+            <Button href={getContactMailto()} className="mt-8 w-full justify-center">
               INQUIRE
             </Button>
           </div>
@@ -451,7 +386,7 @@ export function Section11InsightsFaq() {
                 src={studioSection.image}
                 alt={studioSection.imageAlt}
                 fill
-                className="object-cover grayscale"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority={false}
               />
@@ -487,7 +422,7 @@ export function Section11InsightsFaq() {
             {site.cta.lines[1]}
           </h2>
           <div className="mt-10 flex justify-center">
-            <Button href="/#contact">{site.cta.button}</Button>
+            <Button href={getContactMailto()}>{site.cta.button}</Button>
           </div>
         </div>
         <Marquee />

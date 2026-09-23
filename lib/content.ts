@@ -9,6 +9,10 @@ export function getSite() {
   return site;
 }
 
+export function getContactMailto() {
+  return `mailto:${site.contact.email}`;
+}
+
 export function getWorkProjects(): WorkProject[] {
   return workData.projects;
 }
