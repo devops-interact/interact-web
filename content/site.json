@@ -255,7 +255,8 @@
   },
   "studioSection": {
     "label": "STUDIO",
-    "title": ["Where we build.", "San Pedro Garza García."],
+    "title": ["Let's meet and chat about your project"],
+    "cta": "CONTACT US",
     "address": "Av. José Vasconcelos No. 150, Piso 1, Col. Fátima, San Pedro Garza García, Nuevo León, C.P. 66220.",
     "image": "/studio-office.jpg",
     "imageAlt": "Interact studio workspace in San Pedro Garza García"

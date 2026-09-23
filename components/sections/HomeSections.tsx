@@ -360,11 +360,18 @@ export function Section11InsightsFaq() {
               <p className="font-mono text-[11px] uppercase text-muted-panel">
                 [N. 11] — &gt; {studioSection.label}
               </p>
-              <h2 className="mt-6 text-3xl leading-tight tracking-tight md:text-5xl">
+              <h2 className="mt-6 max-w-lg text-3xl leading-tight tracking-tight md:text-5xl">
                 {studioSection.title[0]}
-                <br />
-                <span className="text-muted-panel">{studioSection.title[1]}</span>
+                {studioSection.title[1] ? (
+                  <>
+                    <br />
+                    <span className="text-muted-panel">{studioSection.title[1]}</span>
+                  </>
+                ) : null}
               </h2>
+              <div className="mt-8">
+                <Button href={getContactMailto()}>{studioSection.cta}</Button>
+              </div>
               <address className="mt-8 max-w-md text-sm leading-relaxed text-muted-panel not-italic">
                 {studioSection.address}
               </address>
