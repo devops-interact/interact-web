@@ -15,8 +15,7 @@
     { "label": "STUDIO", "href": "/#section-11" }
   ],
   "hero": {
-    "lines": ["A software development studio", "for teams that ship."],
-    "highlight": "Studio",
+    "headline": "Delivering a business model to market through user research and technology requires a structured framework that bridges the gap between raw concepts and market adoption.",
     "description": "We partner with founders and product teams to design, build, and launch digital products—one studio accountable from first workshop to production deploy.",
     "ctaPrimary": "START A PROJECT",
     "ctaSecondary": "VIEW WORK",

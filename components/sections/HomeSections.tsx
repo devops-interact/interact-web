@@ -26,11 +26,8 @@ export function Section01Hero() {
       <div className="mx-auto max-w-[1400px]">
         <div className="grid gap-0 md:grid-cols-2">
           <div className="border-b border-[var(--border-panel)] p-8 md:border-b-0 md:border-r md:p-12 lg:p-16">
-            <h1 className="text-4xl leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
-              {hero.lines[0]}
-              <br />
-              <span className="font-mono text-[0.9em]">[{hero.highlight}]</span>{" "}
-              {hero.lines[1]}
+            <h1 className="max-w-2xl text-2xl leading-snug tracking-tight md:text-3xl lg:text-4xl">
+              {hero.headline}
             </h1>
           </div>
           <div className="flex flex-col justify-center p-8 md:p-12 lg:p-16">

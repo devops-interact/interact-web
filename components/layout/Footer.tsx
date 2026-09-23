@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BrandLogo } from "@/components/layout/BrandLogo";
+import { BrandLogo, BRAND_LOGO_HEIGHT } from "@/components/layout/BrandLogo";
 import { getSite } from "@/lib/content";
 
 export function Footer() {
@@ -54,7 +54,7 @@ export function Footer() {
             </ul>
           </div>
           <div className="p-6">
-            <BrandLogo variant="onLight" height={24} />
+            <BrandLogo variant="onLight" height={BRAND_LOGO_HEIGHT} />
             <p className="mt-4 text-sm text-muted-panel">{footer.copyright}</p>
           </div>
         </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { getContactMailto, getSite } from "@/lib/content";
-import { BrandLogo } from "./BrandLogo";
+import { BrandLogo, BRAND_LOGO_HEIGHT } from "./BrandLogo";
 import { InteractiveGrid } from "./InteractiveGrid";
 
 function navMatch(href: string, pathname: string) {
@@ -29,10 +29,10 @@ export function SiteHeader({
   return (
     <>
       <header className="sticky top-0 z-50 surface-grid border-b border-white/20 text-white">
-        <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 p-4 md:px-8">
-          <div className="flex items-center gap-3">
-            <BrandLogo variant="onDark" height={28} />
-            <span className="hidden border border-white/20 px-2 py-0.5 font-mono text-[9px] text-white/50 sm:inline">
+        <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 md:px-8">
+          <div className="flex items-center gap-2">
+            <BrandLogo variant="onDark" height={BRAND_LOGO_HEIGHT} />
+            <span className="hidden border border-white/20 px-1.5 py-0 font-mono text-[8px] leading-6 text-white/50 sm:inline">
               {version}
             </span>
           </div>
@@ -47,7 +47,7 @@ export function SiteHeader({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`border-r border-white/20 px-3 py-2 font-mono text-[10px] tracking-widest last:border-r-0 md:px-4 ${
+                  className={`border-r border-white/20 px-2.5 py-1 font-mono text-[9px] tracking-widest last:border-r-0 md:px-3 ${
                     active
                       ? "bg-white text-black"
                       : "text-white/80 hover:bg-white/10"
@@ -62,7 +62,7 @@ export function SiteHeader({
           <div className="flex items-center gap-3">
             <Link
               href={getContactMailto()}
-              className="hidden items-center gap-2 border border-white/30 bg-white px-4 py-2 font-mono text-[10px] tracking-widest text-black md:flex"
+              className="hidden items-center gap-1.5 border border-white/30 bg-white px-3 py-1 font-mono text-[9px] tracking-widest text-black md:flex"
             >
               <span aria-hidden>↗</span> CONTACT US
             </Link>

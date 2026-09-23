@@ -5,6 +5,9 @@ import { getSite } from "@/lib/content";
 const LOGO_WIDTH = 938;
 const LOGO_HEIGHT = 149;
 
+/** Shared logo height for header and footer */
+export const BRAND_LOGO_HEIGHT = 24;
+
 type BrandLogoProps = {
   variant?: "onDark" | "onLight";
   className?: string;
@@ -14,7 +17,7 @@ type BrandLogoProps = {
 export function BrandLogo({
   variant = "onLight",
   className = "",
-  height = 28,
+  height = BRAND_LOGO_HEIGHT,
 }: BrandLogoProps) {
   const { brand, logo } = getSite();
   const src = logo ?? "/interact-logo.png";
