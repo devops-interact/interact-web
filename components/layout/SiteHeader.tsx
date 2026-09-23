@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { getContactMailto, getSite } from "@/lib/content";
-import { BrandLogo, BRAND_LOGO_HEIGHT } from "./BrandLogo";
+import { BrandLogo, NAV_LOGO_HEIGHT } from "./BrandLogo";
 import { InteractiveGrid } from "./InteractiveGrid";
 
 function navMatch(href: string, pathname: string) {
@@ -31,7 +31,7 @@ export function SiteHeader({
       <header className="sticky top-0 z-50 surface-grid border-b border-white/20 text-white">
         <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 md:px-8">
           <div className="flex items-center gap-2">
-            <BrandLogo variant="onDark" height={BRAND_LOGO_HEIGHT} />
+            <BrandLogo variant="onDark" height={NAV_LOGO_HEIGHT} />
             <span className="hidden border border-white/20 px-1.5 py-0 font-mono text-[8px] leading-6 text-white/50 sm:inline">
               {version}
             </span>

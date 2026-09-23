@@ -5,8 +5,11 @@ import { getSite } from "@/lib/content";
 const LOGO_WIDTH = 938;
 const LOGO_HEIGHT = 149;
 
-/** Shared logo height for header and footer */
+/** Logo height for footer and default */
 export const BRAND_LOGO_HEIGHT = 24;
+
+/** Header nav logo — 25% smaller than BRAND_LOGO_HEIGHT */
+export const NAV_LOGO_HEIGHT = 18;
 
 type BrandLogoProps = {
   variant?: "onDark" | "onLight";
