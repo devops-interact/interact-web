@@ -178,10 +178,7 @@ export function ProcessFlowDiagram({
               width={ICON}
               height={ICON}
             >
-              <div
-                xmlns="http://www.w3.org/1999/xhtml"
-                style={{ width: "100%", height: "100%" }}
-              >
+              <div style={{ width: "100%", height: "100%" }}>
                 <PhasePixelIcon phase={step.index} ink={ink} className="block h-full w-full" />
               </div>
             </foreignObject>
