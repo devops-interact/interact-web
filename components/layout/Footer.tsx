@@ -10,7 +10,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8">
         <div className="grid gap-12 border border-[var(--border-panel)] md:grid-cols-2 lg:grid-cols-3">
           <div className="border-b border-[var(--border-panel)] p-6 md:border-b-0 md:border-r">
-            <p className="font-mono text-[10px] tracking-widest text-muted-panel">PAGES</p>
+            <p className="font-mono text-[10px] tracking-widest text-muted-panel">NAVIGATION</p>
             <ul className="mt-4 grid grid-cols-2 gap-2">
               {nav.map((item) => (
                 <li key={item.href}>
