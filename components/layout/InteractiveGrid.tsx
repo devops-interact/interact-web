@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
 const CELL = 22;
-const HOVER_PEAK = 0.14;
+const HOVER_PEAK = 0.175;
 const TRAIL_DECAY = 0.965;
 const TRAIL_LOOP_EPS = 0.012;
 const SPLASH_HOLD_INTERVAL_MS = 55;
@@ -73,34 +73,51 @@ function spawnSplash(
   const cx = originIdx % cols;
   const cy = Math.floor(originIdx / cols);
   const sparks: SplashSpark[] = [];
-  const count = intensity === "tap" ? 10 + Math.floor(Math.random() * 14) : 4 + Math.floor(Math.random() * 6);
-  const maxDist = intensity === "tap" ? 4 : 3;
+  const rings = intensity === "tap" ? 4 : 2;
+  const spokes = intensity === "tap" ? 8 : 5;
+  const spin = Math.random() * Math.PI * 2;
+  const waveMs = intensity === "tap" ? 46 : 30;
+  const seen = new Set<number>([originIdx]);
 
-  for (let n = 0; n < count; n++) {
-    const angle = Math.random() * Math.PI * 2;
-    const dist = 1 + Math.random() * maxDist;
-    const nx = Math.round(cx + Math.cos(angle) * dist);
-    const ny = Math.round(cy + Math.sin(angle) * dist);
-    if (nx < 0 || ny < 0 || nx >= cols || ny >= rows) continue;
+  for (let ring = 1; ring <= rings; ring++) {
+    for (let s = 0; s < spokes; s++) {
+      const jitter = hashNoise(ring * 31 + s * 7 + now);
+      if (jitter < 0.2) continue;
 
-    const index = ny * cols + nx;
-    const jitter = hashNoise(index + now + n);
-    sparks.push({
-      index,
-      startAt: now + jitter * (intensity === "tap" ? 90 : 40),
-      peak: 0.12 + jitter * 0.32,
-      duration: 140 + jitter * 180,
-    });
+      const angle =
+        spin + (s / spokes) * Math.PI * 2 + (jitter - 0.5) * 0.4;
+      const dist = ring + (hashNoise(s * 13 + ring + now) - 0.5) * 0.4;
+      const nx = Math.round(cx + Math.cos(angle) * dist);
+      const ny = Math.round(cy + Math.sin(angle) * dist);
+      if (nx < 0 || ny < 0 || nx >= cols || ny >= rows) continue;
+
+      const index = ny * cols + nx;
+      if (seen.has(index)) continue;
+      seen.add(index);
+
+      sparks.push({
+        index,
+        startAt: now + ring * waveMs + jitter * 16,
+        peak: Math.max(0.12, 0.4 - ring * 0.06) * (0.8 + jitter * 0.35),
+        duration: 150 + ring * 28 + jitter * 36,
+      });
+    }
   }
 
   sparks.push({
     index: originIdx,
     startAt: now,
-    peak: 0.35 + Math.random() * 0.15,
-    duration: 160 + Math.random() * 100,
+    peak: 0.42 + Math.random() * 0.1,
+    duration: 170 + Math.random() * 40,
   });
 
   return sparks;
+}
+
+function cellGlow(alpha: number, radius: number) {
+  if (alpha <= 0) return undefined;
+  const glow = Math.min(0.9, alpha * 1.6);
+  return `0 0 ${radius}px rgba(255, 255, 255, ${glow})`;
 }
 
 function splashStrength(spark: SplashSpark, now: number): number {
@@ -338,12 +355,17 @@ export function InteractiveGrid({ className = "" }: { className?: string }) {
           const pulse = pulseLevels[i] ?? 0;
 
           return (
-            <div key={i} className="relative border border-[var(--grid-line)]">
+            <div
+              key={i}
+              className="relative"
+              style={{ boxShadow: "inset -0.5px -0.5px 0 var(--grid-line)" }}
+            >
               <div
                 className="pointer-events-none absolute inset-0"
                 style={{
                   backgroundColor:
                     trail > 0 ? `rgba(255,255,255,${trail})` : "transparent",
+                  boxShadow: cellGlow(trail, 10),
                 }}
               />
               <div
@@ -351,6 +373,7 @@ export function InteractiveGrid({ className = "" }: { className?: string }) {
                 style={{
                   backgroundColor:
                     pulse > 0 ? `rgba(255,255,255,${pulse})` : "transparent",
+                  boxShadow: cellGlow(pulse, 14),
                 }}
               />
             </div>

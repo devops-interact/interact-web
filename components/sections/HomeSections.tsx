@@ -95,7 +95,7 @@ export function SectionWork() {
         <p className="font-mono text-[11px] uppercase text-muted-panel">
           {formatSectionLabel(3, "WORK")}
         </p>
-        <h2 className="mt-4 text-3xl md:text-5xl">Work Portfolio</h2>
+        <h2 className="mt-4 text-3xl md:text-5xl">Work Portfolio.</h2>
         <p className="mt-4 max-w-xl text-muted-panel">
           Products we&apos;ve designed and built with founders and teams—from compliance
           and marketplaces to 3D pipelines and editorial platforms.

@@ -15,7 +15,7 @@
     { "label": "STUDIO", "href": "/#studio" }
   ],
   "hero": {
-    "headline": "We deliver your business model to market, from design-to-deploy",
+    "headline": "We deliver your business model to market, from design-to-deploy.",
     "description": "We partner with founders and product teams to design, build, and launch digital products—one studio accountable from first workshop to production deploy.",
     "ctaPrimary": "START A PROJECT",
     "ctaSecondary": "VIEW WORK",
@@ -165,7 +165,7 @@
   },
   "testimonials": {
     "label": "CLIENTS",
-    "title": ["Good culture relies on trust.", "What partners say"],
+    "title": ["Good culture relies on trust.", "What partners say."],
     "items": [
       {
         "type": "tweet",
@@ -201,7 +201,7 @@
   },
   "engagement": {
     "label": "ENGAGEMENT",
-    "title": ["Flexible models.", "Built around your stage."],
+    "title": ["Flexible frameworks.", "Built around your stage."],
     "tiers": [
       {
         "name": "Discovery sprint",
