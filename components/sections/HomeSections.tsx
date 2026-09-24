@@ -75,9 +75,7 @@ export function SectionAbout() {
             {aboutSection.headline}
           </h2>
           <p className="mt-8 max-w-2xl text-sm leading-relaxed text-white/75">
-            Interact is a development studio: you hire us to ship a product. We handle
-            brand, product direction, UX, and engineering in one accountable team—often
-            from first workshop through production launch.
+            {aboutSection.body}
           </p>
         </div>
       </GridBand>
