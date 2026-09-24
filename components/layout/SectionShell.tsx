@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useMotionSafe } from "@/lib/motion";
+import { formatSectionLabel, HOME_SECTION_COUNT } from "@/lib/sectionLabel";
 import { type ReactNode } from "react";
 
 type SectionShellProps = {
@@ -18,7 +19,7 @@ type SectionShellProps = {
 
 export function SectionShell({
   index,
-  total = 11,
+  total = HOME_SECTION_COUNT,
   label,
   titleLines,
   children,
@@ -49,7 +50,7 @@ export function SectionShell({
                 dark ? "text-neutral-500" : "text-muted-panel"
               }`}
             >
-              [N. {padded} / {total}] — &gt; {label}
+              {formatSectionLabel(index, label, total)}
             </p>
             <h2
               className={`mt-6 max-w-2xl text-3xl leading-tight tracking-tight md:text-5xl ${

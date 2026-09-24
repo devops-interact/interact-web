@@ -17,6 +17,7 @@ import { WorkCard } from "@/components/work/WorkCard";
 import { useState } from "react";
 import { Marquee } from "@/components/layout/Marquee";
 import { GridBand } from "@/components/layout/GridBand";
+import { formatSectionLabel } from "@/lib/sectionLabel";
 
 export function Section01Hero() {
   const { hero } = getSite();
@@ -26,7 +27,10 @@ export function Section01Hero() {
       <div className="mx-auto max-w-[1400px]">
         <div className="grid gap-0 md:grid-cols-2">
           <div className="border-b border-[var(--border-panel)] p-8 md:border-b-0 md:border-r md:p-12 lg:p-16">
-            <h1 className="max-w-2xl text-[1.875rem] leading-snug tracking-tight md:text-[2.34375rem] lg:text-[2.8125rem]">
+            <p className="font-mono text-[11px] uppercase text-muted-panel">
+              {formatSectionLabel(1, "HOME")}
+            </p>
+            <h1 className="mt-4 max-w-2xl text-[1.875rem] leading-snug tracking-tight md:text-[2.34375rem] lg:text-[2.8125rem]">
               {hero.headline}
             </h1>
           </div>
@@ -64,22 +68,17 @@ export function SectionAbout() {
     <section id="about" className="border-b border-white/10">
       <GridBand className="py-16 md:py-24" minHeight="min-h-[360px]">
         <div className="mx-auto max-w-[1400px] px-4 text-white md:px-8">
-          <p className="font-mono text-[11px] text-white/50">&gt; About</p>
+          <p className="font-mono text-[11px] uppercase text-white/50">
+            {formatSectionLabel(2, "ABOUT")}
+          </p>
           <h2 className="mt-4 max-w-4xl text-2xl leading-snug tracking-tight text-white md:text-3xl lg:text-4xl">
             {aboutSection.headline}
           </h2>
-          <div className="mt-8 grid gap-8 text-sm leading-relaxed text-white/75 md:grid-cols-2">
-            <p>
-              Interact is a development studio: you hire us to ship a product. We handle
-              brand, product direction, UX, and engineering in one accountable team—often
-              from first workshop through production launch.
-            </p>
-            <p>
-              Our client work includes Prevify, Itemz.gg, Splattr, and Territorio Nacional—each
-              shipped with measurable outcomes in compliance, marketplaces, 3D, and media.
-              Based in Monterrey; we work with founders and product teams remotely.
-            </p>
-          </div>
+          <p className="mt-8 max-w-2xl text-sm leading-relaxed text-white/75">
+            Interact is a development studio: you hire us to ship a product. We handle
+            brand, product direction, UX, and engineering in one accountable team—often
+            from first workshop through production launch.
+          </p>
         </div>
       </GridBand>
     </section>
@@ -95,8 +94,10 @@ export function SectionWork() {
       className="surface-panel border-b border-[var(--border-panel)] py-16 md:py-24"
     >
       <div className="mx-auto max-w-[1400px] px-4 md:px-8">
-        <p className="font-mono text-[11px] text-muted-panel">[N. WORK]</p>
-        <h2 className="mt-4 text-3xl md:text-5xl">Client work</h2>
+        <p className="font-mono text-[11px] uppercase text-muted-panel">
+          {formatSectionLabel(3, "WORK")}
+        </p>
+        <h2 className="mt-4 text-3xl md:text-5xl">Work Portfolio</h2>
         <p className="mt-4 max-w-xl text-muted-panel">
           Products we&apos;ve designed and built with founders and teams—from compliance
           and marketplaces to 3D pipelines and editorial platforms.
@@ -116,7 +117,8 @@ export function Section02Pillars() {
 
   return (
     <SectionShell
-      index={2}
+      index={4}
+      id="section-02"
       label={pillars.label}
       titleLines={[pillars.title[0], pillars.title[1]]}
       action={<Button href={getContactMailto()}>{pillars.cta}</Button>}
@@ -200,6 +202,7 @@ export function Section05Process() {
   return (
     <SectionShell
       index={5}
+      id="section-05"
       label={process.label}
       titleLines={[process.title[0], process.title[1]]}
       action={<Button href={getContactMailto()}>{process.cta}</Button>}
@@ -261,7 +264,8 @@ export function Section08Testimonials() {
 
   return (
     <SectionShell
-      index={8}
+      index={6}
+      id="section-08"
       label={testimonials.label}
       titleLines={[testimonials.title[0], testimonials.title[1]]}
     >
@@ -276,7 +280,8 @@ export function Section09Engagement() {
 
   return (
     <SectionShell
-      index={9}
+      index={7}
+      id="section-09"
       label={engagement.label}
       titleLines={[engagement.title[0], engagement.title[1]]}
     >
@@ -359,7 +364,7 @@ export function Section11InsightsFaq() {
           <div className="grid gap-0 md:grid-cols-2">
             <div className="flex flex-col justify-center border-b border-[var(--border-panel)] p-8 md:border-b-0 md:border-r md:p-12 lg:p-16">
               <p className="font-mono text-[11px] uppercase text-muted-panel">
-                [N. 11] — &gt; {studioSection.label}
+                {formatSectionLabel(8, studioSection.label)}
               </p>
               <h2 className="mt-6 max-w-lg text-3xl leading-tight tracking-tight md:text-5xl">
                 {studioSection.title[0]}
@@ -403,7 +408,7 @@ export function Section11InsightsFaq() {
       <section className="surface-panel border-t border-[var(--border-panel)] py-16 md:py-24">
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <p className="font-mono text-[11px] uppercase text-muted-panel">
-            [N. 11 / 11] — &gt; {site.faqSection.label}
+            {formatSectionLabel(9, site.faqSection.label)}
           </p>
           <h2 className="mt-6 text-3xl md:text-5xl">
             {site.faqSection.title[0]}
