@@ -109,7 +109,7 @@
   },
   "process": {
     "label": "HOW WE WORK",
-    "title": ["Understand the flow.", "See how we partner."],
+    "title": ["Understand the workflow.", "Learn how we partner."],
     "cta": "START A PROJECT",
     "steps": [
       { "index": "001", "title": "Discovery", "body": "Goals, users, risks, and timeline in a focused discovery workshop." },
