@@ -1,6 +1,6 @@
 "use client";
 
-import { PixelTerminalDisplay } from "./PixelTerminalDisplay";
+import { PixelOutlineIcon } from "./PixelOutlineIcon";
 import {
   drawAiAutomation,
   drawBrandLaunch,
@@ -8,17 +8,14 @@ import {
   drawProductUx,
 } from "./serviceIconDraws";
 
-const ICONS: Record<string, { label: string; draw: typeof drawProductUx }> = {
-  "001": { label: "product_ux.bin", draw: drawProductUx },
-  "002": { label: "engineering.bin", draw: drawEngineering },
-  "003": { label: "brand_launch.bin", draw: drawBrandLaunch },
-  "004": { label: "ai_automation.bin", draw: drawAiAutomation },
-};
+const ICONS = {
+  "001": drawProductUx,
+  "002": drawEngineering,
+  "003": drawBrandLaunch,
+  "004": drawAiAutomation,
+} as const;
 
 export function ServicePillarIcon({ index }: { index: string }) {
-  const config = ICONS[index] ?? ICONS["001"];
-
-  return (
-    <PixelTerminalDisplay label={config.label} draw={config.draw} />
-  );
+  const draw = ICONS[index as keyof typeof ICONS] ?? ICONS["001"];
+  return <PixelOutlineIcon draw={draw} />;
 }
