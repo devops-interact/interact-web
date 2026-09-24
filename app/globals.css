@@ -108,6 +108,16 @@ h6 {
   animation: terminal-cursor-blink 1s step-end infinite;
 }
 
+.terminal-glow {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.85);
+}
+
+.terminal-glow-bar {
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}
+
 @keyframes process-flow-pulse {
   from {
     stroke-dashoffset: 1;
@@ -126,6 +136,20 @@ h6 {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+@keyframes process-flow-node-glow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+
+.process-flow-node--glow {
+  stroke-dasharray: 0.18 0.82;
+  animation: process-flow-node-glow 2.4s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .terminal-cursor {
     animation: none;
@@ -139,6 +163,11 @@ h6 {
 
   .process-flow-node {
     transition: none;
+  }
+
+  .process-flow-node--glow {
+    animation: none;
+    stroke-dasharray: none;
   }
 }
 

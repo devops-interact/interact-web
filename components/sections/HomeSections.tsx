@@ -15,7 +15,6 @@ import { PartnerStrip } from "@/components/sections/PartnerStrip";
 import { getContactMailto, getSite, getFaq, getWorkProjects } from "@/lib/content";
 import { WorkCard } from "@/components/work/WorkCard";
 import { ServicePillarIcon } from "@/components/services/ServicePillarIcon";
-import { useState } from "react";
 import { Marquee } from "@/components/layout/Marquee";
 import { GridBand } from "@/components/layout/GridBand";
 import { formatSectionLabel } from "@/lib/sectionLabel";
@@ -276,7 +275,6 @@ export function Section08Testimonials() {
 
 export function Section09Engagement() {
   const { engagement } = getSite();
-  const [mode, setMode] = useState<0 | 1>(0);
 
   return (
     <SectionShell
@@ -285,20 +283,6 @@ export function Section09Engagement() {
       label={engagement.label}
       titleLines={[engagement.title[0], engagement.title[1]]}
     >
-      <div className="mb-8 flex items-center gap-6 border border-[var(--border-panel)] px-4 py-3">
-        {engagement.toggle.map((label, i) => (
-          <button
-            key={label}
-            type="button"
-            onClick={() => setMode(i as 0 | 1)}
-            className={`font-mono text-[10px] tracking-widest ${
-              mode === i ? "text-[var(--text-on-panel)]" : "text-muted-panel"
-            }`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
       <div className="grid border-t border-l border-[var(--border-panel)] lg:grid-cols-3">
         {engagement.tiers.map((tier) => (
           <div
@@ -314,9 +298,6 @@ export function Section09Engagement() {
             )}
             <h3 className="mt-2 text-xl font-semibold">{tier.name}</h3>
             <p className="mt-2 text-sm text-muted-panel">{tier.description}</p>
-            <p className="mt-6 text-3xl font-semibold">
-              {mode === 0 ? tier.sprintPrice : tier.retainerPrice}
-            </p>
             <ul className="mt-6 flex-1 space-y-2 text-sm text-muted-panel">
               {tier.features.map((f) => (
                 <li key={f}>— {f}</li>

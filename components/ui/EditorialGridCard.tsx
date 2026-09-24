@@ -5,8 +5,6 @@ type EditorialGridCardProps = {
   body: string;
   title: string;
   footer?: ReactNode;
-  /** Position in row — drives accent bar and title emphasis (same as process steps). */
-  position: number;
 };
 
 export function EditorialGridCard({
@@ -14,24 +12,13 @@ export function EditorialGridCard({
   body,
   title,
   footer,
-  position,
 }: EditorialGridCardProps) {
   return (
     <article className="border-r border-b border-[var(--border-panel)] p-6">
-      <div
-        className={`mb-4 h-1 w-full ${
-          position === 0 ? "bg-[var(--text-on-panel)]" : "bg-neutral-200"
-        }`}
-      />
+      <div className="mb-4 h-1 w-full bg-[var(--text-on-panel)]" />
       <p className="font-mono text-xs text-muted-panel">// {index}</p>
       <p className="mt-4 text-sm leading-relaxed text-muted-panel">{body}</p>
-      <h3
-        className={`mt-6 text-lg font-medium ${
-          position <= 1 ? "text-[var(--text-on-panel)]" : "text-neutral-400"
-        }`}
-      >
-        {title}
-      </h3>
+      <h3 className="mt-6 text-lg font-medium text-[var(--text-on-panel)]">{title}</h3>
       {footer ? (
         <p className="mt-2 font-mono text-[10px] tracking-wide text-muted-panel">
           {footer}

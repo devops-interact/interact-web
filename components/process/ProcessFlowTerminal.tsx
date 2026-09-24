@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { TerminalFrame } from "@/components/ui/TerminalFrame";
 import { TerminalTypewriter } from "@/components/ui/TerminalTypewriter";
 import { ProcessFlowDiagram } from "@/components/process/ProcessFlowDiagram";
+import { PhasePixelIcon } from "@/components/process/PhasePixelIcon";
 import { getSite } from "@/lib/content";
 
 const AUTO_ADVANCE_MS = 7000;
@@ -50,7 +51,7 @@ export function ProcessFlowTerminal() {
       bodyRef={panelRef}
       shellProps={{
         tabIndex: 0,
-        className: "outline-none focus-visible:ring-1 focus-visible:ring-[#a3e635] focus-visible:ring-inset",
+        className: "outline-none focus-visible:ring-1 focus-visible:ring-white focus-visible:ring-inset",
         onKeyDown,
         onPointerEnter: () => setPaused(true),
         onPointerLeave: () => setPaused(false),
@@ -79,24 +80,31 @@ export function ProcessFlowTerminal() {
                       }`}
                     >
                       <span
-                        className={`w-1 shrink-0 ${active ? "bg-[#a3e635]" : "bg-transparent"}`}
+                        className={`w-1 shrink-0 ${active ? "terminal-glow-bar" : "bg-transparent"}`}
                         aria-hidden
                       />
-                      <span className="px-4 py-3">
-                        <span
-                          className={`block font-mono text-[10px] ${
-                            active ? "text-[#a3e635]" : "text-neutral-600"
-                          }`}
-                        >
-                          // {s.index}
+                      <span className="flex flex-1 items-center gap-3 px-4 py-3">
+                        <span className="min-w-0 flex-1">
+                          <span
+                            className={`block font-mono text-[10px] ${
+                              active ? "terminal-glow" : "text-neutral-600"
+                            }`}
+                          >
+                            // {s.index}
+                          </span>
+                          <span
+                            className={`mt-1 block font-mono text-xs tracking-wide ${
+                              active ? "terminal-glow" : "text-neutral-500"
+                            }`}
+                          >
+                            {active ? `<${s.title.toUpperCase()}>` : s.title}
+                          </span>
                         </span>
-                        <span
-                          className={`mt-1 block font-mono text-xs tracking-wide ${
-                            active ? "text-white" : "text-neutral-500"
-                          }`}
-                        >
-                          {active ? `<${s.title.toUpperCase()}>` : s.title}
-                        </span>
+                        <PhasePixelIcon
+                          phase={s.index}
+                          ink={active ? "#ffffff" : "#a3a3a3"}
+                          className="block h-7 w-7 shrink-0"
+                        />
                       </span>
                     </button>
                   </li>
@@ -106,7 +114,7 @@ export function ProcessFlowTerminal() {
           </nav>
           <div className="p-5 md:p-6">
             <p className="font-mono text-[10px] text-neutral-600">// HOW WE WORK</p>
-            <p className="mt-3 font-mono text-xs text-[#a3e635]">
+            <p className="terminal-glow mt-3 font-mono text-xs">
               {`> phase::${phaseSlug}`}
             </p>
             <div className="mt-4 min-h-[4.5rem]">

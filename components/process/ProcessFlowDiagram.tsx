@@ -1,12 +1,15 @@
 "use client";
 
-const W = 520;
-const H = 200;
-const NODE_W = 88;
-const NODE_H = 52;
-const Y = 88;
+import { PhasePixelIcon } from "@/components/process/PhasePixelIcon";
 
-type Step = { title: string };
+const W = 520;
+const H = 220;
+const NODE_W = 88;
+const NODE_H = 72;
+const Y = 68;
+const ICON = 24;
+
+type Step = { title: string; index: string };
 
 function nodeX(index: number, count: number) {
   const gap = (W - count * NODE_W) / (count + 1);
@@ -36,8 +39,15 @@ export function ProcessFlowDiagram({
       aria-label={`Process flow, step ${activeIndex + 1} of ${steps.length}: ${steps[activeIndex]?.title}`}
     >
       <defs>
-        <filter id="process-flow-glow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="2" result="blur" />
+        <filter id="process-flow-glow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="2.5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter id="process-flow-node-glow" x="-15%" y="-25%" width="130%" height="150%">
+          <feGaussianBlur stdDeviation="1.1" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
@@ -70,7 +80,7 @@ export function ProcessFlowDiagram({
               <path
                 d={d}
                 fill="none"
-                stroke="#a3e635"
+                stroke="#ffffff"
                 strokeWidth="3"
                 strokeOpacity="0.25"
                 filter="url(#process-flow-glow)"
@@ -84,7 +94,7 @@ export function ProcessFlowDiagram({
               <path
                 d={d}
                 fill="none"
-                stroke="#a3e635"
+                stroke="#ffffff"
                 strokeWidth="2"
                 className="process-flow-edge--pulse"
                 pathLength={1}
@@ -109,8 +119,9 @@ export function ProcessFlowDiagram({
         const isPast = i < activeIndex;
         const isCurrent = i === activeIndex;
         const isFuture = i > activeIndex;
-        const stroke = isCurrent ? "#a3e635" : isPast ? "#d4d4d4" : "#3a3a3a";
+        const stroke = isCurrent ? "#ffffff" : isPast ? "#d4d4d4" : "#3a3a3a";
         const fill = isFuture ? "#141414" : "#0c0c0c";
+        const ink = isCurrent ? "#ffffff" : isPast ? "#d4d4d4" : "#737373";
 
         return (
           <g
@@ -130,8 +141,24 @@ export function ProcessFlowDiagram({
               rx={2}
               fill={fill}
               stroke={stroke}
-              strokeWidth={isCurrent ? 2 : 1}
+              strokeWidth="1"
             />
+            {isCurrent ? (
+              <rect
+                className="process-flow-node--glow"
+                x={x}
+                y={Y}
+                width={NODE_W}
+                height={NODE_H}
+                rx={2}
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="1.25"
+                strokeLinecap="round"
+                pathLength={1}
+                filter="url(#process-flow-node-glow)"
+              />
+            ) : null}
             {/* corner ticks */}
             <path
               d={`M ${x + 4} ${Y} V ${Y + 6} M ${x} ${Y + 4} H ${x + 6}`}
@@ -145,11 +172,24 @@ export function ProcessFlowDiagram({
               strokeWidth="1"
               fill="none"
             />
+            <foreignObject
+              x={x + (NODE_W - ICON) / 2}
+              y={Y + 8}
+              width={ICON}
+              height={ICON}
+            >
+              <div
+                xmlns="http://www.w3.org/1999/xhtml"
+                style={{ width: "100%", height: "100%" }}
+              >
+                <PhasePixelIcon phase={step.index} ink={ink} className="block h-full w-full" />
+              </div>
+            </foreignObject>
             <text
               x={x + NODE_W / 2}
-              y={Y + NODE_H / 2 + 4}
+              y={Y + NODE_H - 12}
               textAnchor="middle"
-              className="fill-neutral-400 font-mono text-[9px] uppercase tracking-wider"
+              className={`${isCurrent ? "fill-white" : "fill-neutral-400"} font-mono text-[9px] uppercase tracking-wider`}
               style={{ fontFamily: "var(--font-geist-mono), monospace" }}
             >
               {step.title.length > 10 ? `${step.title.slice(0, 9)}…` : step.title}

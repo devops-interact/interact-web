@@ -49,7 +49,7 @@ export function TerminalTypewriter({
     <p className={`font-mono text-xs leading-relaxed text-neutral-400 ${className}`}>
       {shown}
       {!done && !reducedMotion ? (
-        <span className="terminal-cursor text-[#a3e635]" aria-hidden>█</span>
+        <span className="terminal-cursor terminal-glow" aria-hidden>█</span>
       ) : null}
     </p>
   );

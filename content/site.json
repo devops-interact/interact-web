@@ -33,7 +33,7 @@
   },
   "pillars": {
     "label": "SERVICES",
-    "title": ["How far do we reach?", "As far as the scope requires it."],
+    "title": ["Learn about our skills.", "We deliver."],
     "cta": "WORK WITH US",
     "items": [
       {
@@ -169,6 +169,7 @@
     "items": [
       {
         "type": "tweet",
+        "industry": "TAX COMPLIANCE",
         "name": "Founder",
         "handle": "@prevify",
         "text": "One studio owned brand, product, and engineering—we went live in two months and closed our pre-seed with a real product.",
@@ -176,12 +177,14 @@
       },
       {
         "type": "quote",
+        "industry": "MARKETPLACE",
         "name": "Product lead",
         "role": "Marketplace",
         "text": "They ran research, designed the marketplace, and shipped the stack. We focused on community while Interact focused on delivery."
       },
       {
         "type": "tweet",
+        "industry": "3D",
         "name": "Engineering",
         "handle": "@splattr",
         "text": "Complex 3D pipeline in the browser—they stayed in the weeds with us until beta was stable.",
@@ -189,6 +192,7 @@
       },
       {
         "type": "quote",
+        "industry": "EDITORIAL",
         "name": "Editor",
         "role": "Media",
         "text": "Editorial automation without losing transparency—they built the pipeline we could audit and improve weekly."
@@ -198,7 +202,6 @@
   "engagement": {
     "label": "ENGAGEMENT",
     "title": ["Flexible models.", "Built around your stage."],
-    "toggle": ["Fixed scope", "Monthly retainer"],
     "tiers": [
       {
         "name": "Discovery sprint",
