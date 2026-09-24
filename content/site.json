@@ -284,7 +284,6 @@
     "button": "START A PROJECT"
   },
   "footer": {
-    "newsletter": "Studio notes, launch stories, and process—once in a while, no spam.",
     "copyright": "© Interact 2026 — Software development studio"
   },
   "marqueeTags": ["#studio", "#shipped", "#design", "#engineering"]

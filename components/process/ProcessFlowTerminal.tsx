@@ -46,7 +46,7 @@ export function ProcessFlowTerminal() {
 
   return (
     <TerminalFrame
-      title="how_we_work.flow"
+      title="// HOW WE WORK"
       bodyRef={panelRef}
       shellProps={{
         tabIndex: 0,
@@ -121,7 +121,7 @@ export function ProcessFlowTerminal() {
 
         <div className="flex min-h-[200px] flex-col bg-[#0a0a0a] p-4 md:p-6">
           <p className="mb-3 font-mono text-[10px] tracking-widest text-neutral-600">
-            WIREFRAME :: PIPELINE
+            // HOW WE WORK
           </p>
           <div className="flex flex-1 items-center">
             <ProcessFlowDiagram steps={steps} activeIndex={activeIndex} />
