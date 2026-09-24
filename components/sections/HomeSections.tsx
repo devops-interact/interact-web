@@ -9,11 +9,12 @@ import { Accordion } from "@/components/ui/Accordion";
 import { TestimonialStrip } from "@/components/ui/TestimonialStrip";
 import { ChangelogTimeline } from "@/components/ui/ChangelogTimeline";
 import { CapabilitiesSplit } from "@/components/ui/CapabilitiesSplit";
-import { ProcessGrid } from "@/components/ui/ProcessGrid";
+import { ProcessFlowTerminal } from "@/components/process/ProcessFlowTerminal";
 import Image from "next/image";
 import { PartnerStrip } from "@/components/sections/PartnerStrip";
 import { getContactMailto, getSite, getFaq, getWorkProjects } from "@/lib/content";
 import { WorkCard } from "@/components/work/WorkCard";
+import { ServicePillarIcon } from "@/components/services/ServicePillarIcon";
 import { useState } from "react";
 import { Marquee } from "@/components/layout/Marquee";
 import { GridBand } from "@/components/layout/GridBand";
@@ -23,7 +24,7 @@ export function Section01Hero() {
   const { hero } = getSite();
 
   return (
-    <section id="section-01" className="surface-panel border-b border-[var(--border-panel)]">
+    <section id="home" className="surface-panel border-b border-[var(--border-panel)]">
       <div className="mx-auto max-w-[1400px]">
         <div className="grid gap-0 md:grid-cols-2">
           <div className="border-b border-[var(--border-panel)] p-8 md:border-b-0 md:border-r md:p-12 lg:p-16">
@@ -116,19 +117,20 @@ export function Section02Pillars() {
   return (
     <SectionShell
       index={4}
-      id="section-02"
+      id="services"
       label={pillars.label}
       titleLines={[pillars.title[0], pillars.title[1]]}
       action={<Button href={getContactMailto()}>{pillars.cta}</Button>}
     >
-      <div className="grid border-t border-l border-[var(--border-panel)] sm:grid-cols-3">
+      <div className="grid border-t border-l border-[var(--border-panel)] sm:grid-cols-2 lg:grid-cols-4">
         {pillars.items.map((item) => (
           <article
             key={item.index}
             className="border-r border-b border-[var(--border-panel)] p-8"
           >
             <p className="font-mono text-xs text-muted-panel">// {item.index}</p>
-            <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
+            <ServicePillarIcon index={item.index} />
+            <h3 className="text-lg font-semibold">{item.title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-panel">{item.body}</p>
             <p className="mt-6 font-mono text-[10px] tracking-widest text-muted-panel">
               {item.chip}
@@ -200,12 +202,12 @@ export function Section05Process() {
   return (
     <SectionShell
       index={5}
-      id="section-05"
+      id="process"
       label={process.label}
       titleLines={[process.title[0], process.title[1]]}
       action={<Button href={getContactMailto()}>{process.cta}</Button>}
     >
-      <ProcessGrid steps={process.steps} />
+      <ProcessFlowTerminal />
     </SectionShell>
   );
 }
@@ -263,7 +265,7 @@ export function Section08Testimonials() {
   return (
     <SectionShell
       index={6}
-      id="section-08"
+      id="clients"
       label={testimonials.label}
       titleLines={[testimonials.title[0], testimonials.title[1]]}
     >
@@ -279,7 +281,7 @@ export function Section09Engagement() {
   return (
     <SectionShell
       index={7}
-      id="section-09"
+      id="engagement"
       label={engagement.label}
       titleLines={[engagement.title[0], engagement.title[1]]}
     >
@@ -355,7 +357,7 @@ export function Section11InsightsFaq() {
   return (
     <>
       <section
-        id="section-11"
+        id="studio"
         className="surface-panel border-t border-[var(--border-panel)]"
       >
         <div className="mx-auto max-w-[1400px]">
@@ -403,7 +405,10 @@ export function Section11InsightsFaq() {
         </div>
       </section>
 
-      <section className="surface-panel border-t border-[var(--border-panel)] py-16 md:py-24">
+      <section
+        id="faq"
+        className="surface-panel border-t border-[var(--border-panel)] py-16 md:py-24"
+      >
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <p className="font-mono text-[11px] uppercase text-muted-panel">
             {formatSectionLabel(9, site.faqSection.label)}

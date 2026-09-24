@@ -11,8 +11,8 @@
     { "label": "HOME", "href": "/" },
     { "label": "ABOUT", "href": "/#about" },
     { "label": "WORK", "href": "/#work" },
-    { "label": "SERVICES", "href": "/#section-02" },
-    { "label": "STUDIO", "href": "/#section-11" }
+    { "label": "SERVICES", "href": "/#services" },
+    { "label": "STUDIO", "href": "/#studio" }
   ],
   "hero": {
     "headline": "We deliver your business model to market, from design-to-deploy",
@@ -33,7 +33,7 @@
   },
   "pillars": {
     "label": "SERVICES",
-    "title": ["Less vendor juggling.", "More shipped work."],
+    "title": ["How far do we reach?", "As far as the scope requires it."],
     "cta": "WORK WITH US",
     "items": [
       {
@@ -53,6 +53,12 @@
         "title": "Brand & launch",
         "body": "Identity, narrative, and launch surfaces so you can recruit, fundraise, and onboard early users.",
         "chip": "Go-to-market ready"
+      },
+      {
+        "index": "004",
+        "title": "AI-driven Automation",
+        "body": "We automate industrial and corporate workflows with AI—integrations, agents, and ops tooling tailored to your environment. From manufacturing and logistics to finance, retail, healthcare, and energy, Interact scopes automation where it removes friction and scales with the business.",
+        "chip": "Industrial + enterprise"
       }
     ]
   },
@@ -159,7 +165,7 @@
   },
   "testimonials": {
     "label": "CLIENTS",
-    "title": ["Less talk, more shipping.", "What partners say."],
+    "title": ["Good culture relies on trust.", "What partners say"],
     "items": [
       {
         "type": "tweet",
