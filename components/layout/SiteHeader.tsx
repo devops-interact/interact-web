@@ -7,28 +7,27 @@ import { getContactMailto, getSite } from "@/lib/content";
 import { BrandLogo, NAV_LOGO_HEIGHT } from "./BrandLogo";
 import { InteractiveGrid } from "./InteractiveGrid";
 
-function navMatch(href: string, pathname: string, hash: string) {
-  if (href === "/") {
-    return pathname === "/" && (hash === "" || hash === "home");
-  }
+/** Sections without a nav item keep the previous nav item active while scrolling. */
+const SECTION_NAV: Record<string, string> = {
+  home: "/",
+  about: "/#about",
+  work: "/#work",
+  services: "/#services",
+  process: "/#services",
+  clients: "/#services",
+  engagement: "/#services",
+  studio: "/#studio",
+  faq: "/#studio",
+};
 
-  const section = href.startsWith("/#") ? href.slice(2) : null;
-  if (section) {
-    if (section === "work") {
-      return pathname.startsWith("/work") || (pathname === "/" && hash === "work");
-    }
-    if (section === "about") {
-      return pathname === "/about" || (pathname === "/" && hash === "about");
-    }
-    if (section === "services") {
-      return pathname === "/services" || (pathname === "/" && hash === "services");
-    }
-    if (section === "studio") {
-      return pathname === "/studio" || (pathname === "/" && hash === "studio");
-    }
-    return pathname === "/" && hash === section;
-  }
+const SCROLL_SECTIONS = Object.keys(SECTION_NAV);
 
+function navMatch(href: string, pathname: string, activeHref: string) {
+  if (pathname === "/") return href === activeHref;
+  if (pathname.startsWith("/work")) return href === "/#work";
+  if (pathname === "/about") return href === "/#about";
+  if (pathname === "/services") return href === "/#services";
+  if (pathname === "/studio") return href === "/#studio";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -42,13 +41,30 @@ export function SiteHeader({
   const { version, nav } = getSite();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [hash, setHash] = useState("");
+  const [activeHref, setActiveHref] = useState("/");
 
   useEffect(() => {
-    const syncHash = () => setHash(window.location.hash.replace(/^#/, ""));
-    syncHash();
-    window.addEventListener("hashchange", syncHash);
-    return () => window.removeEventListener("hashchange", syncHash);
+    if (pathname !== "/") return;
+
+    const sync = () => {
+      const header = document.querySelector("header");
+      const marker = (header?.getBoundingClientRect().height ?? 64) + 48;
+      let current = "home";
+      for (const id of SCROLL_SECTIONS) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= marker) current = id;
+      }
+      setActiveHref(SECTION_NAV[current] ?? "/");
+    };
+
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("hashchange", sync);
+    return () => {
+      window.removeEventListener("scroll", sync);
+      window.removeEventListener("hashchange", sync);
+    };
   }, [pathname]);
 
   const navItems = nav.filter((item) => item.label !== "CONTACT");
@@ -69,7 +85,7 @@ export function SiteHeader({
             aria-label="Main"
           >
             {navItems.map((item) => {
-              const active = navMatch(item.href, pathname, hash);
+              const active = navMatch(item.href, pathname, activeHref);
               return (
                 <Link
                   key={item.href}
@@ -108,7 +124,7 @@ export function SiteHeader({
         {open && (
           <div className="border-t border-white/10 bg-black p-6 md:hidden">
             {navItems.map((item) => {
-              const active = navMatch(item.href, pathname, hash);
+              const active = navMatch(item.href, pathname, activeHref);
               return (
                 <Link
                   key={item.href}

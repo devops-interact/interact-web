@@ -112,7 +112,7 @@
     "title": ["Understand the flow.", "See how we partner."],
     "cta": "START A PROJECT",
     "steps": [
-      { "index": "001", "title": "Kickoff", "body": "Goals, users, risks, and timeline in a focused discovery workshop." },
+      { "index": "001", "title": "Discovery", "body": "Goals, users, risks, and timeline in a focused discovery workshop." },
       { "index": "002", "title": "Prototype", "body": "Clickable UX and technical spikes to validate before full build." },
       { "index": "003", "title": "Build", "body": "Production features, design system, and infra with weekly demos." },
       { "index": "004", "title": "Launch", "body": "Release, measure, iterate—and hand off with documentation." }

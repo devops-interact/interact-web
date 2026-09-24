@@ -32,13 +32,50 @@ function inside(cells: Cell[]) {
   return cells.filter(([x, y]) => x >= 0 && y >= 0 && x < COLS && y < ROWS);
 }
 
-/** Flag on a pole. The cloth shifts one pixel between frames. */
-function kickoff(t: number): Cell[] {
-  const wave = Math.floor(t / 12) % 2;
-  const pole = block(1, 1, 2, 11);
-  const cloth = block(3, 1, 9 + wave, 5);
-  const notch = block(3, 3, 5, 3);
-  return inside([...pole, ...cloth.filter((cell) => !notch.some(([x, y]) => x === cell[0] && y === cell[1])), [0, 11], [3, 11]]);
+/** Magnifying glass. The lens sweeps a small search path; a glint tracks inside. */
+function discovery(t: number): Cell[] {
+  const sweep = [
+    [0, 0],
+    [1, 0],
+    [1, 1],
+    [0, 1],
+    [-1, 1],
+    [-1, 0],
+    [-1, -1],
+    [0, -1],
+  ][Math.floor(t / 8) % 8];
+  const [dx, dy] = sweep;
+  const lens = [
+    ...block(4, 2, 6, 2),
+    [3, 3],
+    [7, 3],
+    [2, 4],
+    [8, 4],
+    [2, 5],
+    [8, 5],
+    [2, 6],
+    [8, 6],
+    [3, 7],
+    [7, 7],
+    ...block(4, 8, 6, 8),
+  ];
+  const handle = [
+    [7, 9],
+    [8, 9],
+    [8, 10],
+    [9, 10],
+  ];
+  const glint = [
+    [4, 4],
+    [5, 4],
+    [6, 4],
+    [6, 5],
+    [5, 5],
+    [4, 5],
+  ][Math.floor(t / 6) % 6];
+  return inside(
+    [...lens, ...handle, glint].map(([x, y]) => [x + dx, y + dy] as Cell),
+  );
 }
 
 /** Wireframe window. A cursor block steps across the lower row. */
@@ -62,35 +99,45 @@ function build(t: number): Cell[] {
   ]);
 }
 
-/** Rocket bobs. Exhaust flickers under the fins. */
+/** Rocket bobs. Fins sweep to a point; exhaust flickers under the nozzle. */
 function launch(t: number): Cell[] {
   const bob = [0, -1, 0, 1][Math.floor(t / 8) % 4];
   const body: Cell[] = [
-    [6, 0],
-    [5, 1],
     [6, 1],
-    [7, 1],
-    [4, 2],
     [5, 2],
     [6, 2],
     [7, 2],
-    [8, 2],
-    ...block(4, 3, 8, 7),
+    [5, 3],
+    [6, 3],
+    [7, 3],
+    ...block(4, 4, 8, 4),
+    ...block(3, 5, 9, 5),
+    [1, 6],
     [2, 6],
     [3, 6],
-    [2, 7],
-    [3, 7],
+    [5, 6],
+    [6, 6],
+    [7, 6],
     [9, 6],
     [10, 6],
-    [9, 7],
-    [10, 7],
+    [11, 6],
+    [0, 7],
+    [1, 7],
+    [5, 7],
+    [6, 7],
+    [7, 7],
+    [11, 7],
+    [12, 7],
+    [5, 8],
+    [6, 8],
+    [7, 8],
   ].map(([x, y]) => [x, y + bob] as Cell);
   if (Math.floor(t / 5) % 2 === 0) body.push([6, 10 + bob]);
   return inside(body);
 }
 
 const DRAW: Record<string, (t: number) => Cell[]> = {
-  "001": kickoff,
+  "001": discovery,
   "002": prototype,
   "003": build,
   "004": launch,
