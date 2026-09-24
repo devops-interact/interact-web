@@ -15,7 +15,9 @@ export function Accordion({ items }: { items: Item[] }) {
           <div key={item.id}>
             <button
               type="button"
-              className="flex w-full items-start gap-4 px-6 py-5 text-left"
+              className={`flex w-full items-start gap-4 px-6 text-left ${
+                open ? "pt-5 pb-0" : "py-5"
+              }`}
               aria-expanded={open}
               onClick={() => setOpenId(open ? null : item.id)}
             >
@@ -26,9 +28,9 @@ export function Accordion({ items }: { items: Item[] }) {
               </span>
             </button>
             {open && (
-              <p className="border-t border-[var(--border-panel)] px-6 pb-5 pl-16 text-sm leading-relaxed text-muted-panel">
-                {item.answer}
-              </p>
+              <div className="border-t border-[var(--border-panel)] px-6 py-5 pl-16">
+                <p className="text-sm leading-relaxed text-muted-panel">{item.answer}</p>
+              </div>
             )}
           </div>
         );

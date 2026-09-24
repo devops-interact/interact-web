@@ -2,14 +2,33 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getContactMailto, getSite } from "@/lib/content";
 import { BrandLogo, NAV_LOGO_HEIGHT } from "./BrandLogo";
 import { InteractiveGrid } from "./InteractiveGrid";
 
-function navMatch(href: string, pathname: string) {
-  if (href === "/") return pathname === "/";
-  if (href.startsWith("/#")) return pathname === "/";
+function navMatch(href: string, pathname: string, hash: string) {
+  if (href === "/") {
+    return pathname === "/" && (hash === "" || hash === "home");
+  }
+
+  const section = href.startsWith("/#") ? href.slice(2) : null;
+  if (section) {
+    if (section === "work") {
+      return pathname.startsWith("/work") || (pathname === "/" && hash === "work");
+    }
+    if (section === "about") {
+      return pathname === "/about" || (pathname === "/" && hash === "about");
+    }
+    if (section === "services") {
+      return pathname === "/services" || (pathname === "/" && hash === "services");
+    }
+    if (section === "studio") {
+      return pathname === "/studio" || (pathname === "/" && hash === "studio");
+    }
+    return pathname === "/" && hash === section;
+  }
+
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -23,6 +42,14 @@ export function SiteHeader({
   const { version, nav } = getSite();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [hash, setHash] = useState("");
+
+  useEffect(() => {
+    const syncHash = () => setHash(window.location.hash.replace(/^#/, ""));
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, [pathname]);
 
   const navItems = nav.filter((item) => item.label !== "CONTACT");
 
@@ -42,7 +69,7 @@ export function SiteHeader({
             aria-label="Main"
           >
             {navItems.map((item) => {
-              const active = navMatch(item.href, pathname);
+              const active = navMatch(item.href, pathname, hash);
               return (
                 <Link
                   key={item.href}
@@ -53,7 +80,7 @@ export function SiteHeader({
                       : "text-white/80 hover:bg-white/10"
                   }`}
                 >
-                  {item.label === "HOME" ? `<${item.label}>` : item.label}
+                  {item.label === "HOME" && active ? `<${item.label}>` : item.label}
                 </Link>
               );
             })}
@@ -80,16 +107,21 @@ export function SiteHeader({
 
         {open && (
           <div className="border-t border-white/10 bg-black p-6 md:hidden">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block py-3 font-mono text-sm"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const active = navMatch(item.href, pathname, hash);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`block py-3 font-mono text-sm ${
+                    active ? "bg-white px-2 text-black" : ""
+                  }`}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label === "HOME" && active ? `<${item.label}>` : item.label}
+                </Link>
+              );
+            })}
             <Link
               href={getContactMailto()}
               className="mt-4 inline-flex items-center gap-2 border border-white/30 bg-white px-4 py-2 font-mono text-[10px] tracking-widest text-black"
