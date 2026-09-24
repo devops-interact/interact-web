@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
-const CELL = 44;
+const CELL = 22;
 const HOVER_PEAK = 0.14;
 const TRAIL_DECAY = 0.965;
 const TRAIL_LOOP_EPS = 0.012;
