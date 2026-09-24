@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { TerminalFrame } from "@/components/ui/TerminalFrame";
 import { TerminalTypewriter } from "@/components/ui/TerminalTypewriter";
 import { ProcessFlowDiagram } from "@/components/process/ProcessFlowDiagram";
-import { PhasePixelIcon } from "@/components/process/PhasePixelIcon";
 import { getSite } from "@/lib/content";
 
 const AUTO_ADVANCE_MS = 7000;
@@ -83,28 +82,21 @@ export function ProcessFlowTerminal() {
                         className={`w-1 shrink-0 ${active ? "terminal-glow-bar" : "bg-transparent"}`}
                         aria-hidden
                       />
-                      <span className="flex flex-1 items-center gap-3 px-4 py-3">
-                        <span className="min-w-0 flex-1">
-                          <span
-                            className={`block font-mono text-[10px] ${
-                              active ? "terminal-glow" : "text-neutral-600"
-                            }`}
-                          >
-                            // {s.index}
-                          </span>
-                          <span
-                            className={`mt-1 block font-mono text-xs tracking-wide ${
-                              active ? "terminal-glow" : "text-neutral-500"
-                            }`}
-                          >
-                            {active ? `<${s.title.toUpperCase()}>` : s.title}
-                          </span>
+                      <span className="px-4 py-3">
+                        <span
+                          className={`block font-mono text-[10px] ${
+                            active ? "terminal-glow" : "text-neutral-600"
+                          }`}
+                        >
+                          // {s.index}
                         </span>
-                        <PhasePixelIcon
-                          phase={s.index}
-                          ink={active ? "#ffffff" : "#a3a3a3"}
-                          className="block h-7 w-7 shrink-0"
-                        />
+                        <span
+                          className={`mt-1 block font-mono text-xs tracking-wide ${
+                            active ? "terminal-glow" : "text-neutral-500"
+                          }`}
+                        >
+                          {active ? `<${s.title.toUpperCase()}>` : s.title}
+                        </span>
                       </span>
                     </button>
                   </li>
