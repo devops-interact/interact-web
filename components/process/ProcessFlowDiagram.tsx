@@ -1,6 +1,7 @@
 "use client";
 
-import { PhasePixelIcon } from "@/components/process/PhasePixelIcon";
+import { useId } from "react";
+import { PhasePixelSvg } from "@/components/process/PhasePixelIcon";
 
 const W = 520;
 const H = 220;
@@ -31,10 +32,12 @@ export function ProcessFlowDiagram({
   steps: Step[];
   activeIndex: number;
 }) {
+  const uid = useId().replace(/:/g, "");
+
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
-      className="h-full w-full min-h-[180px]"
+      className="h-full w-full min-h-[180px] overflow-hidden"
       role="img"
       aria-label={`Process flow, step ${activeIndex + 1} of ${steps.length}: ${steps[activeIndex]?.title}`}
     >
@@ -172,16 +175,18 @@ export function ProcessFlowDiagram({
               strokeWidth="1"
               fill="none"
             />
-            <foreignObject
-              x={x + (NODE_W - ICON) / 2}
-              y={Y + 8}
-              width={ICON}
-              height={ICON}
-            >
-              <div style={{ width: "100%", height: "100%" }}>
-                <PhasePixelIcon phase={step.index} ink={ink} className="block h-full w-full" />
-              </div>
-            </foreignObject>
+            <clipPath id={`${uid}-icon-${i}`}>
+              <rect x={x + 2} y={Y + 2} width={NODE_W - 4} height={NODE_H - 22} />
+            </clipPath>
+            <g clipPath={`url(#${uid}-icon-${i})`}>
+              <PhasePixelSvg
+                phase={step.index}
+                ink={ink}
+                x={x + (NODE_W - ICON) / 2}
+                y={Y + 8}
+                size={ICON}
+              />
+            </g>
             <text
               x={x + NODE_W / 2}
               y={Y + NODE_H - 12}

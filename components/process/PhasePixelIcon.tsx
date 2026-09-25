@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
 const COLS = 13;
@@ -142,6 +142,53 @@ const DRAW: Record<string, (t: number) => Cell[]> = {
   "003": build,
   "004": launch,
 };
+
+/** Pixel cells drawn in the parent SVG so they scale with the viewBox on small screens. */
+export function PhasePixelSvg({
+  phase,
+  ink = "#ffffff",
+  x,
+  y,
+  size,
+}: {
+  phase: string;
+  ink?: string;
+  x: number;
+  y: number;
+  size: number;
+}) {
+  const [cells, setCells] = useState<Cell[]>([]);
+  const frameRef = useRef(0);
+  const reducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    const draw = DRAW[phase] ?? DRAW["001"];
+    let raf = 0;
+
+    const paint = () => {
+      const t = reducedMotion ? 0 : frameRef.current;
+      setCells(draw(t));
+      if (!reducedMotion) {
+        frameRef.current += 1;
+        raf = requestAnimationFrame(paint);
+      }
+    };
+
+    frameRef.current = 0;
+    paint();
+    return () => cancelAnimationFrame(raf);
+  }, [phase, reducedMotion]);
+
+  const scale = size / COLS;
+
+  return (
+    <g transform={`translate(${x} ${y}) scale(${scale})`} shapeRendering="crispEdges">
+      {cells.map(([cx, cy]) => (
+        <rect key={`${cx}-${cy}`} x={cx} y={cy} width={1} height={1} fill={ink} />
+      ))}
+    </g>
+  );
+}
 
 export function PhasePixelIcon({
   phase,
